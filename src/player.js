@@ -23,7 +23,7 @@ class Player{
         this.animate();
 
         clearCanvas();
-        getCanvas().drawImage(this.sprite, this.position.x, this.position.y);
+        getCanvas().drawImage(this.sprite, this.position.x, this.position.y, 100,100);
     }
 
     animate(){
