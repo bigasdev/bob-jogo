@@ -7,7 +7,7 @@ canvas{
     bottom: 0;
     margin: auto;
     display: block;
-    background-color: black;
+    background-color: rgb(77, 219, 255);
 }
 
 
@@ -27,7 +27,8 @@ button{
     background: url('./assets/menu/jogar.png');
     background-position: center;
     background-repeat: no-repeat;
-    width: 300px;
+    background-size: 75%;
+    width: 275px;
     height: 100px;
 }
 .instrucoes{
@@ -35,7 +36,8 @@ button{
     background: url('./assets/menu/tutorial.png');
     background-position: center;
     background-repeat: no-repeat;
-    width: 300px;
+    background-size: 75%;
+    width: 275px;
     height: 100px;
 }
 .creditos{
@@ -43,7 +45,8 @@ button{
     background: url('./assets/menu/creditos.png');
     background-position: center;
     background-repeat: no-repeat;
-    width: 300px;
+    background-size: 75%;
+    width: 275px;
     height: 100px;
 }
 .voltar{

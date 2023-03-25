@@ -1,5 +1,5 @@
 import { getState, states } from "./state.js";
-import { getCanvas } from "./app.js";
+import { getCanvas, clearCanvas } from "./app.js";
 
 class Player{
     constructor(position, size, image, speed){
@@ -12,7 +12,7 @@ class Player{
         this.sprite = new Image();
         this.sprite.src = "./assets/bob/parado/Armature_Parado_00.png";
 
-        this.maxFrames = 47;
+        this.maxFrames = 16;
         this.currentFrame = 0;
     }
 
@@ -22,11 +22,12 @@ class Player{
 
         this.animate();
 
+        clearCanvas();
         getCanvas().drawImage(this.sprite, this.position.x, this.position.y);
     }
 
     animate(){
-        this.sprite.src = `./assets/bob/parado/Armature_Parado_${this.currentFrame}.png`
+        this.sprite.src = `./assets/bob/pulando/Armature_Pulando_${this.currentFrame}.png`
         this.currentFrame += 1;
 
         if(this.currentFrame >= this.maxFrames){
