@@ -11,13 +11,27 @@ class Player{
         //creating base image
         this.sprite = new Image();
         this.sprite.src = "./assets/bob/parado/Armature_Parado_00.png";
+
+        this.maxFrames = 47;
+        this.currentFrame = 0;
     }
 
     draw(){
         if(getState() !== states.playing)return;
         console.log('drawing');
 
+        this.animate();
+
         getCanvas().drawImage(this.sprite, this.position.x, this.position.y);
+    }
+
+    animate(){
+        this.sprite.src = `./assets/bob/parado/Armature_Parado_${this.currentFrame}.png`
+        this.currentFrame += 1;
+
+        if(this.currentFrame >= this.maxFrames){
+            this.currentFrame = 0;
+        }
     }
 }
 
