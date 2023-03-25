@@ -1,4 +1,4 @@
-import { Bob } from './player.js';
+import { Bob, Botanico } from './player.js';
 import {startButtons} from './menu.js';
 import { startController } from './controller.js';
 
@@ -25,7 +25,10 @@ export function clearCanvas(){
 
 function update(){
     window.requestAnimationFrame(update);
+    clearCanvas();
+    
     Bob.draw();
+    Botanico.draw();
 }
 
 startCanvas();

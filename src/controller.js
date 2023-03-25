@@ -41,15 +41,15 @@ export function startController(){
     
             // player2 keys
             case 'ArrowRight':
-                keys.ArrowRight.pressed = true
+                keys.ArrowRight.pressed = true;
                 
             break
             case 'ArrowLeft':
-                keys.ArrowLeft.pressed = true
+                keys.ArrowLeft.pressed = true;
                 
             break
             case 'ArrowUp':
-                
+                keys.ArrowUp.pressed = true;
             break
             
         }
@@ -59,23 +59,25 @@ export function startController(){
     window.addEventListener('keyup', (event) => {
         switch (event.key) {
             case 'd':
-                keys.d.pressed = false
+                keys.d.pressed = false;
             break
             case 'a':
-                keys.a.pressed = false
+                keys.a.pressed = false;
             break
             case 'w':
-                keys.w.pressed = false
+                keys.w.pressed = false;
             break
             
             //player2 keys
             case 'ArrowRight':
-                keys.ArrowRight.pressed = false
+                keys.ArrowRight.pressed = false;
             break
             case 'ArrowLeft':
-                keys.ArrowLeft.pressed = false
+                keys.ArrowLeft.pressed = false;
             break
-    
+            case 'ArrowUp':
+                keys.ArrowUp.pressed = false;
+            break;
         }
     })
 }
