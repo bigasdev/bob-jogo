@@ -1,9 +1,17 @@
+import { changeState, states } from "./state.js";
+
 export function startButtons(){
     document.getElementById('voltar').addEventListener('click', ()=>{
         restart();
     })
     document.getElementById('start').addEventListener('click',()=>{
         playButton();   
+    })
+    document.getElementById('instrucoes').addEventListener('click',()=>{
+        tutorialButton();
+    })
+    document.getElementById('creditos').addEventListener('click', () =>{
+        creditosButton();
     })
 }
 function changeSairState(state){
@@ -18,8 +26,16 @@ function changeSairState(state){
 export function restart(){
     document.getElementById('menu').style.display = 'block';
     changeSairState(false);
+    changeState(states.idle);
 }
 
 function playButton(){
+    changeSairState(true);
+    changeState(states.playing);
+}
+function tutorialButton(){
+    changeSairState(true);
+}
+function creditosButton(){
     changeSairState(true);
 }
