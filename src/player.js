@@ -23,12 +23,13 @@ class Player{
         this.animate();
 
         clearCanvas();
-        getCanvas().drawImage(this.sprite, this.position.x, this.position.y, 100,100);
+        getCanvas().drawImage(this.sprite, this.position.x, this.position.y);
     }
 
     animate(){
-        this.sprite.src = `./assets/bob/pulando/Armature_Pulando_${this.currentFrame}.png`
+        this.sprite.src = `./assets/bob/correndo/Armature_Correndo_${this.currentFrame}.png`
         this.currentFrame += 1;
+        this.position.x += 1;
 
         if(this.currentFrame >= this.maxFrames){
             this.currentFrame = 0;
