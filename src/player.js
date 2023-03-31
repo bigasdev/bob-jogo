@@ -15,10 +15,13 @@ class Player{
 
         this.maxFrames = 16;
         this.currentFrame = 0;
+
+        this.score = 0;
     }
 
     restart(){
         this.position.x = 0;
+        this.score = 0;
     }
 
     draw(){
@@ -73,10 +76,13 @@ class BotanicoClass{
 
         this.maxFrames = 48;
         this.currentFrame = 0;
+
+        this.score = 0;
     }
 
     restart(){
         this.position.x = 50;
+        this.score = 0;
     }
 
     draw(){

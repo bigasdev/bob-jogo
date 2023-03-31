@@ -9,6 +9,7 @@ var c2d;
 
 //variaveis de controle pro jogo
 var playersDistThreshold = 650;
+export var winner;
 
 function startCanvas(){
     canvas = document.getElementById("canvas_bg");
@@ -39,9 +40,19 @@ function update(){
     {
         var d = Math.abs(Bob.position.x - Botanico.position.x);
         if(d >= playersDistThreshold){
-            startEndgame();
+            console.log(`Bob position : ${Bob.position.x}`);
+            console.log(`Botanico position : ${Botanico.position.x}`);
+
+            if(Bob.position.x > Botanico.position.x){
+                Bob.score += 50;
+                winner = "BOB";
+            }else{
+                Botanico.score += 50;
+                winner = "BOTANICO";
+            }
             Bob.restart();
             Botanico.restart();
+            startEndgame();
         }
     }
 }

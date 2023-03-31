@@ -1,3 +1,4 @@
+import { winner } from "./app.js";
 import { changeSairState, restart } from "./menu.js";
 import { Bob, Botanico } from "./player.js";
 import { changeState, states } from "./state.js";
@@ -6,6 +7,11 @@ export default function startEndgame(){
     document.getElementById('fim_de_jogo').style.display = 'block';
     changeState(states.finished);
     changeSairState(false);
+
+    //mudando os textos do menu
+    document.getElementById('bob_score').innerHTML = `Bob: ${Bob.score}`;
+    document.getElementById('botanico_score').innerHTML = `Botanico: ${Botanico.score}`;
+    document.getElementById('winner').innerHTML = `VENCEDOR: ${winner}`;
 }
 
 function restartEndgame(){
