@@ -17,6 +17,10 @@ class Player{
         this.currentFrame = 0;
     }
 
+    restart(){
+        this.position.x = 0;
+    }
+
     draw(){
         if(getState() !== states.playing)return;
         console.log(`drawing, ${this.position.x}`);
@@ -71,6 +75,10 @@ class BotanicoClass{
         this.currentFrame = 0;
     }
 
+    restart(){
+        this.position.x = 50;
+    }
+
     draw(){
         if(getState() !== states.playing)return;
         console.log(`drawing, ${this.position.x}`);
@@ -111,5 +119,5 @@ class BotanicoClass{
     }
 }
 
-export let Bob = new Player({x:50,y:50}, {w:1,h:1}, "./test.png", 5);
-export let Botanico = new BotanicoClass({x:150,y:50}, {w:1,h:1}, "./test.png", 5);
+export let Bob = new Player({x:0,y:50}, {w:1,h:1}, "./test.png", 5);
+export let Botanico = new BotanicoClass({x:50,y:50}, {w:1,h:1}, "./test.png", 5);

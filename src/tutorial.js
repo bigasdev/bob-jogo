@@ -1,6 +1,6 @@
 import { changeState, states } from "./state.js";
 
-export default function startTutorial(){
+export default function startTutorialApp(){
     document.getElementById('tutorial').style.display = "block";
 }
 export function closeTutorial(){
@@ -12,7 +12,7 @@ var tutorialImgName = "./assets/tutorial/tutorial_"
 var tutorialState = 0;
 var tutorialAmt = 3;
 
-export function addTutorialListener(){
+export function startTutorial(){
     document.getElementById('tutorial_prox').addEventListener('click',()=>{
         next();
     })

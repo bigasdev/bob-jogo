@@ -111,3 +111,21 @@ button{
     background-repeat: no-repeat;
     background-size: 50%;
 }
+#fim_de_jogo{
+    background-color: purple;
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+}
+#fim_de_jogo_sair{
+    position: relative;
+    left: 4rem;
+}
+#fim_de_jogo_restart{
+    position: relative;
+    left: 4rem;
+}
