@@ -38,4 +38,5 @@ function tutorialButton(){
 }
 function creditosButton(){
     changeSairState(true);
+    window.close();
 }
