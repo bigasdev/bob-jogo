@@ -1,4 +1,5 @@
 import { changeState, states } from "./state.js";
+import startTutorial, { closeTutorial } from "./tutorial.js";
 
 export function startButtons(){
     document.getElementById('voltar').addEventListener('click', ()=>{
@@ -26,17 +27,19 @@ function changeSairState(state){
 export function restart(){
     document.getElementById('menu').style.display = 'block';
     changeSairState(false);
+    closeTutorial();
     changeState(states.idle);
 }
 
 function playButton(){
     changeSairState(true);
-    changeState(states.playing);
+    //changeState(states.playing);
+    startTutorial();
 }
 function tutorialButton(){
     changeSairState(true);
+    startTutorial();
 }
 function creditosButton(){
     changeSairState(true);
-    window.close();
 }

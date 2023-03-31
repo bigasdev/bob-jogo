@@ -9,7 +9,31 @@ canvas{
     display: block;
     background-color: rgb(77, 219, 255);
 }
-
+#tutorial{
+    display: none;
+}
+#tutorial_img{
+    width: 960px;
+    height: 540px;
+    position: absolute;
+    left: 12.6rem;
+    top: 2.75rem;
+}
+#tutorial_anterior{
+    left: 15rem;
+    bottom: 5rem;
+    position: absolute;
+}
+#tutorial_prox{
+    right: 15rem;
+    bottom: 5rem;
+    position: absolute;
+}
+#tutorial_pular{
+    left: 34rem;
+    bottom: 5rem;
+    position: absolute;
+}
 
 .menu{
     position: fixed;

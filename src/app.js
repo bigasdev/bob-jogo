@@ -1,6 +1,7 @@
 import { Bob, Botanico } from './player.js';
 import {startButtons} from './menu.js';
 import { startController } from './controller.js';
+import { addTutorialListener } from './tutorial.js';
 
 var canvas;
 var c2d;
@@ -34,6 +35,7 @@ function update(){
 startCanvas();
 startButtons();
 startController();
+addTutorialListener();
 
 //
 update();
