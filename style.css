@@ -1,4 +1,4 @@
-canvas{
+canvas {
     position: absolute;
     border: 2px solid;
     right: 0;
@@ -9,77 +9,75 @@ canvas{
     display: block;
     background-color: rgb(77, 219, 255);
 }
-#tutorial{
+#tutorial {
     display: none;
 }
-#tutorial_img{
+#tutorial_img {
     width: 960px;
     height: 540px;
     position: absolute;
     left: 12.6rem;
     top: 2.75rem;
 }
-#tutorial_anterior{
+#tutorial_anterior {
     left: 15rem;
     bottom: 5rem;
     position: absolute;
 }
-#tutorial_prox{
+#tutorial_prox {
     right: 15rem;
     bottom: 5rem;
     position: absolute;
 }
-#tutorial_pular{
+#tutorial_pular {
     left: 34rem;
     bottom: 5rem;
     position: absolute;
 }
-
-.menu{
+/*Animacao pra fazer os botao descer*/
+@keyframes scale {
+    0% {
+        opacity: 0%;
+        transform: translateX(-150%);
+        transform: translateY(-100%);
+    }
+}
+.menu {
     position: fixed;
-    top: 30%;
-    left:40%;
-    width:80px;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-150%);
+    width: 80px;
 }
 
-button{
+button {
     border: 0px;
+    transition: all 0.1s ease-in-out;
 }
 
-.start{
+button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.start {
     float: left;
-    background: url('./assets/menu/jogar.png');
+    background: url("./assets/menu/jogar.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 75%;
     width: 275px;
     height: 100px;
 }
-.start:hover{
-    background: url('./assets/menu/jogar_hover.png');
+.start:hover {
+    background: url("./assets/menu/jogar_hover.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 75%;
 }
-.instrucoes{
+.instrucoes {
     float: left;
-    background: url('./assets/menu/tutorial.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 75%;
-    width: 275px;
-    height: 100px;
-    margin-top: -35px;
-}
-.instrucoes:hover{
-    background: url('./assets/menu/tutorial_hover.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 75%;
-}
-.creditos{
-    float: left;
-    background: url('./assets/menu/creditos.png');
+    background: url("./assets/menu/tutorial.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 75%;
@@ -87,14 +85,30 @@ button{
     height: 100px;
     margin-top: -35px;
 }
-.creditos:hover{
-    background: url('./assets/menu/creditos_hover.png');
+.instrucoes:hover {
+    background: url("./assets/menu/tutorial_hover.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 75%;
 }
-.voltar{
-    background: url('./assets/menu/sair.png');
+.creditos {
+    float: left;
+    background: url("./assets/menu/creditos.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    width: 275px;
+    height: 100px;
+    margin-top: -35px;
+}
+.creditos:hover {
+    background: url("./assets/menu/creditos_hover.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+}
+.voltar {
+    background: url("./assets/menu/sair.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 50%;
@@ -105,27 +119,27 @@ button{
     right: 100px;
     display: none;
 }
-.voltar:hover{
-    background: url('./assets/menu/sair_hover.png');
+.voltar:hover {
+    background: url("./assets/menu/sair_hover.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 50%;
 }
-#fim_de_jogo{
+#fim_de_jogo {
     background-color: purple;
     width: 400px;
     height: 400px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     display: none;
 }
-#fim_de_jogo_sair{
+#fim_de_jogo_sair {
     position: relative;
     left: 4rem;
 }
-#fim_de_jogo_restart{
+#fim_de_jogo_restart {
     position: relative;
     left: 4rem;
 }
