@@ -1,3 +1,5 @@
+//Script principal, aqui iremos inicializar tudo e rodar o update
+
 import { Bob, Botanico } from "./player.js";
 import { menuAnimation, startButtons, startMenuAnimation } from "./menu.js";
 import { startController } from "./controller.js";
@@ -12,7 +14,7 @@ var canvas;
 var c2d;
 
 //variaveis de controle pro jogo
-var playersDistThreshold = 960;
+var playersDistThreshold = 760;
 export var winner;
 
 //Funcao de iniicializao pra tudo
@@ -74,6 +76,19 @@ function update() {
         Bob.draw();
         Botanico.draw();
     }
+    //check do fim de jogo
+    if (Bob.position.x > 1960 || Botanico.position.x > 1960) {
+        if (Bob.position.x > Botanico.position.x) {
+            Bob.score += 50;
+            winner = "BOB";
+        } else {
+            Botanico.score += 50;
+            winner = "BOTANICO";
+        }
+        Bob.restart();
+        Botanico.restart();
+        startEndgame();
+    }
     //check de distancia entre os players
     {
         var d = Math.abs(Bob.position.x - Botanico.position.x);
@@ -81,7 +96,7 @@ function update() {
             console.log(`Bob position : ${Bob.position.x}`);
             console.log(`Botanico position : ${Botanico.position.x}`);
 
-            if (Bob.position.x > Botanico.position.x || Bob.position.x > 1960) {
+            if (Bob.position.x > Botanico.position.x) {
                 Bob.score += 50;
                 winner = "BOB";
             } else {
