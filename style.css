@@ -11,27 +11,29 @@ canvas {
 }
 #tutorial {
     display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 #tutorial_img {
-    width: 960px;
-    height: 540px;
     position: absolute;
-    left: 12.6rem;
-    top: 2.75rem;
+    top: -5rem;
+    left: -2.5rem;
 }
 #tutorial_anterior {
-    left: 15rem;
-    bottom: 5rem;
+    top: 13.75rem;
+    left: -22.5rem;
     position: absolute;
 }
 #tutorial_prox {
-    right: 15rem;
-    bottom: 5rem;
+    top: 13.75rem;
+    left: 7.5rem;
     position: absolute;
 }
 #tutorial_pular {
-    left: 34rem;
-    bottom: 5rem;
+    top: 13.75rem;
+    left: -7.5rem;
     position: absolute;
 }
 /*Animacao pra fazer os botao descer*/
@@ -134,6 +136,12 @@ button:hover {
     background-repeat: no-repeat;
     background-size: 75%;
 }
+#voltar-botao {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 .voltar {
     background: url("./assets/menu/sair.png");
     background-position: center;
@@ -142,8 +150,9 @@ button:hover {
     border: 0px;
     width: 300px;
     height: 100px;
+    top: -20rem;
+    left: 15rem;
     position: absolute;
-    right: 100px;
     display: none;
 }
 .voltar:hover {
