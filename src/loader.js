@@ -1,15 +1,21 @@
 import { changeState, states } from "./state.js";
 
-//Mapa que vai guardar a imagem de todos os assets
+//Mapa que vai guardar a imagem de todos os assets do menu
 var assets = new Map();
+//Mapa do bob
+var bobAssets = new Map();
+//Mapa do botanico
+var botanicoAssets = new Map();
 
-//Funcao pra pegar o Image de um asset
-export function getAsset(name) {
+//Funcoes pra pegar o Image de um asset
+export function getAsset(name, map = "menu") {
     var a = assets.get(name);
+    if (map === "bob") a = bobAssets.get(name);
+    if (map === "botanico") a = botanicoAssets.get(name);
     if (a) {
         return a;
     } else {
-        console.log(`Asset ${name} nao encontrado`);
+        console.log(`Asset ${name} nao encontrado no mapa ${map}`);
     }
 }
 
@@ -58,7 +64,7 @@ export async function loadCharactersAssets() {
             img.onload = () => resolve(img);
             img.src = `./assets/bob/parado/${animName}${i}.png`;
             console.log(`Adicionando ${animName}${i} ao mapa`);
-            assets.set(`${animName}${i}`, img);
+            bobAssets.set(`${animName}${i}`, img);
         });
     }
     var animName = "Armature_Andando_";
@@ -69,7 +75,7 @@ export async function loadCharactersAssets() {
             img.onload = () => resolve(img);
             img.src = `./assets/bob/andando/${animName}${i}.png`;
             console.log(`Adicionando ${animName}${i} ao mapa`);
-            assets.set(`${animName}${i}`, img);
+            bobAssets.set(`${animName}${i}`, img);
         });
     }
     var animName = "Armature_Correndo_";
@@ -80,7 +86,7 @@ export async function loadCharactersAssets() {
             img.onload = () => resolve(img);
             img.src = `./assets/bob/correndo/${animName}${i}.png`;
             console.log(`Adicionando ${animName}${i} ao mapa`);
-            assets.set(`${animName}${i}`, img);
+            bobAssets.set(`${animName}${i}`, img);
         });
     }
     var animName = "Armature_Pulando_";
@@ -91,7 +97,7 @@ export async function loadCharactersAssets() {
             img.onload = () => resolve(img);
             img.src = `./assets/bob/pulando/${animName}${i}.png`;
             console.log(`Adicionando ${animName}${i} ao mapa`);
-            assets.set(`${animName}${i}`, img);
+            bobAssets.set(`${animName}${i}`, img);
         });
     }
     var animName = "Armature_Caindo_";
@@ -102,7 +108,7 @@ export async function loadCharactersAssets() {
             img.onload = () => resolve(img);
             img.src = `./assets/bob/caindo/${animName}${i}.png`;
             console.log(`Adicionando ${animName}${i} ao mapa`);
-            assets.set(`${animName}${i}`, img);
+            bobAssets.set(`${animName}${i}`, img);
         });
     }
     //Carregando os assets do botanico
@@ -114,7 +120,7 @@ export async function loadCharactersAssets() {
             img.onload = () => resolve(img);
             img.src = `./assets/botanico/parado/${animName}${i}.png`;
             console.log(`Adicionando ${animName}${i} ao mapa`);
-            assets.set(`${animName}${i}`, img);
+            botanicoAssets.set(`${animName}${i}`, img);
         });
     }
     var animName = "Armature_Andando_";
@@ -125,7 +131,7 @@ export async function loadCharactersAssets() {
             img.onload = () => resolve(img);
             img.src = `./assets/botanico/andando/${animName}${i}.png`;
             console.log(`Adicionando ${animName}${i} ao mapa`);
-            assets.set(`${animName}${i}`, img);
+            botanicoAssets.set(`${animName}${i}`, img);
         });
     }
     var animName = "Armature_Correndo_";
@@ -136,7 +142,7 @@ export async function loadCharactersAssets() {
             img.onload = () => resolve(img);
             img.src = `./assets/botanico/correndo/${animName}${i}.png`;
             console.log(`Adicionando ${animName}${i} ao mapa`);
-            assets.set(`${animName}${i}`, img);
+            botanicoAssets.set(`${animName}${i}`, img);
         });
     }
     var animName = "Armature_Pulando_";
@@ -147,7 +153,7 @@ export async function loadCharactersAssets() {
             img.onload = () => resolve(img);
             img.src = `./assets/botanico/pulando/${animName}${i}.png`;
             console.log(`Adicionando ${animName}${i} ao mapa`);
-            assets.set(`${animName}${i}`, img);
+            botanicoAssets.set(`${animName}${i}`, img);
         });
     }
     var animName = "Armature_Caindo_";
@@ -158,7 +164,7 @@ export async function loadCharactersAssets() {
             img.onload = () => resolve(img);
             img.src = `./assets/botanico/caindo/${animName}${i}.png`;
             console.log(`Adicionando ${animName}${i} ao mapa`);
-            assets.set(`${animName}${i}`, img);
+            botanicoAssets.set(`${animName}${i}`, img);
         });
     }
     var animName = "Armature_Quack_";
@@ -169,7 +175,7 @@ export async function loadCharactersAssets() {
             img.onload = () => resolve(img);
             img.src = `./assets/botanico/quack/${animName}${i}.png`;
             console.log(`Adicionando ${animName}${i} ao mapa`);
-            assets.set(`${animName}${i}`, img);
+            botanicoAssets.set(`${animName}${i}`, img);
         });
     }
     //Finalizando o loading
