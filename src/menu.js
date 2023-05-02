@@ -31,7 +31,7 @@ export function restart() {
     document.getElementById("menu").style.display = "block";
     changeSairState(false);
     closeTutorial();
-    changeState(states.idle);
+    changeState(states.paused);
 }
 
 function playButton() {
@@ -68,5 +68,6 @@ export function menuAnimation() {
     if (animIndex > 64 && folderName === "Fundo") {
         animIndex = 0;
     }
+    console.log("drawing");
     getCanvas().drawImage(getAsset(`${animName}${animIndex}`), 0, 0);
 }

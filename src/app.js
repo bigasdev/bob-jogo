@@ -4,7 +4,7 @@ import { startController } from "./controller.js";
 import { startTutorial } from "./tutorial.js";
 import startEndgame, { startEndgameController } from "./endgame.js";
 import { changeState, getState, states } from "./state.js";
-import { loadMenuAssets } from "./loader.js";
+import { loadCharactersAssets, loadMenuAssets } from "./loader.js";
 
 var canvas;
 var c2d;
@@ -17,6 +17,7 @@ export var winner;
 function startApp() {
     changeState(states.idle, "Starting app");
     loadMenuAssets();
+    loadCharactersAssets();
 }
 
 function startCanvas() {
@@ -61,7 +62,7 @@ function update() {
         then = now - (elapsed % fpsInterval);
 
         //check pra animacao inicial
-        menuAnimation();
+        if (getState() !== states.playing) menuAnimation();
         Bob.draw();
         Botanico.draw();
     }
