@@ -48,6 +48,7 @@ function creditosButton() {
 
 //Animacao do menu
 let animIndex = 0;
+let folderName = "Entrando";
 let animName = "Armature_Entrando_";
 let animSprite;
 
@@ -62,8 +63,13 @@ export function menuAnimation() {
     animIndex++;
     if (animIndex > 80) {
         animIndex = 0;
+        animName = "Armature_Fundo_";
+        folderName = "Fundo";
+    }
+    if (animIndex > 64 && folderName === "Fundo") {
+        animIndex = 0;
     }
     console.log("animating");
-    animSprite.src = `./assets/menu/Entrando/${animName}${animIndex}.png`;
+    animSprite.src = `./assets/menu/${folderName}/${animName}${animIndex}.png`;
     getCanvas().drawImage(animSprite, 0, 0);
 }

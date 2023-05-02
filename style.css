@@ -41,8 +41,12 @@ canvas {
         transform: translateX(-150%);
         transform: translateY(-100%);
     }
+    100% {
+        opacity: 100%;
+    }
 }
 .menu {
+    display: none;
     position: fixed;
     top: 40%;
     left: 50%;
