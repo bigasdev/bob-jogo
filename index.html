@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <script type="module" src="./src/app.js"></script>
-    <canvas id="canvas_bg"></canvas>
-    <div id="menu" class="menu">
-        <button id="start" class="start"></button>
-        <button id="instrucoes" class="instrucoes"></button>
-        <button id="creditos" class="creditos"></button>
-    </div>
-    <div id="tutorial" class="tutorial">
-        <img id="tutorial_img" src="./assets/tutorial/tutorial_0.jpeg">
-        <button id="tutorial_prox" class="start"></button>
-        <button id="tutorial_anterior" class="start"></button>
-        <button id="tutorial_pular" class="start"></button>
-    </div>
-    <div id="fim_de_jogo">
-        <h1 id="bob_score">Bob: 0</h1>
-        <h1 id="botanico_score">Botanico: 0</h1>
-        <h1 id="winner">VENCEDOR FOI!!!</h1>
-        <button id="fim_de_jogo_sair" class="start"></button>
-        <button id="fim_de_jogo_restart" class="start"></button>
-    </div>
-    <button id="voltar" class="voltar"></button>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <script type="module" src="./src/app.js"></script>
+        <canvas id="canvas_bg"></canvas>
+        <div id="menu" class="menu">
+            <button id="start" class="start"></button>
+            <button id="instrucoes" class="instrucoes"></button>
+            <button id="creditos" class="creditos"></button>
+        </div>
+        <div id="loading">
+            <h1>Carregando....</h1>
+        </div>
+        <div id="tutorial" class="tutorial">
+            <img id="tutorial_img" src="./assets/tutorial/tutorial_0.jpeg" />
+            <button id="tutorial_prox" class="start"></button>
+            <button id="tutorial_anterior" class="start"></button>
+            <button id="tutorial_pular" class="start"></button>
+        </div>
+        <div id="fim_de_jogo">
+            <h1 id="bob_score">Bob: 0</h1>
+            <h1 id="botanico_score">Botanico: 0</h1>
+            <h1 id="winner">VENCEDOR FOI!!!</h1>
+            <button id="fim_de_jogo_sair" class="start"></button>
+            <button id="fim_de_jogo_restart" class="start"></button>
+        </div>
+        <button id="voltar" class="voltar"></button>
+    </body>
 </html>

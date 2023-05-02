@@ -1,4 +1,5 @@
 import { getCanvas } from "./app.js";
+import { getAsset } from "./loader.js";
 import { changeState, states } from "./state.js";
 import startTutorialApp from "./tutorial.js";
 import { closeTutorial } from "./tutorial.js";
@@ -54,9 +55,7 @@ let animSprite;
 
 //Inicializando o menu pra ter o sprite
 export function startMenuAnimation() {
-    animSprite = new Image();
-    animSprite.src = `./assets/menu/Entrando/${animName}${animIndex}.png`;
-    getCanvas().drawImage(animSprite, 0, 0);
+    getCanvas().drawImage(getAsset(`${animName}${animIndex}`), 0, 0);
 }
 //Mudando o sprite a cada frame
 export function menuAnimation() {
@@ -69,7 +68,5 @@ export function menuAnimation() {
     if (animIndex > 64 && folderName === "Fundo") {
         animIndex = 0;
     }
-    console.log("animating");
-    animSprite.src = `./assets/menu/${folderName}/${animName}${animIndex}.png`;
-    getCanvas().drawImage(animSprite, 0, 0);
+    getCanvas().drawImage(getAsset(`${animName}${animIndex}`), 0, 0);
 }
