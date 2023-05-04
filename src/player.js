@@ -53,9 +53,6 @@ class Player {
         if (this.currentFrame >= this.maxFrames) {
             this.currentFrame = 0;
         }
-
-        this.update();
-        this.gravity();
     }
 
     //Funcao pro pulo
@@ -83,6 +80,7 @@ class Player {
             if (this.position.y < 340) return;
             this.jumped = true;
         }
+        this.gravity();
     }
 
     gravity() {
@@ -148,9 +146,6 @@ class BotanicoClass {
         if (this.currentFrame >= this.maxFrames) {
             this.currentFrame = 0;
         }
-
-        this.update();
-        this.gravity();
     }
 
     jump() {
@@ -169,6 +164,7 @@ class BotanicoClass {
     }
 
     update() {
+        console.log('tet botanico');
         this.jump();
 
         //Controle das animacoes, dps vai ser reforumlado pra um state controller
@@ -197,6 +193,7 @@ class BotanicoClass {
             this.moving = false;
             this.jumped = true;
         }
+        this.gravity();
     }
 
     gravity() {

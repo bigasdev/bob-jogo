@@ -44,6 +44,8 @@ export function clearCanvas() {
 
 //Variaveis pra controlar o fps
 var fps, fpsInterval, startTime, now, then, elapsed;
+//Variaveis pra controlar o fps do controller
+var fpsController, fpsIntervalController, startTimeController, nowController, thenController, elapsedController;
 
 // Inicializando com fps, no nosso caso vai ser 60
 
@@ -52,6 +54,32 @@ function startUpdate(fps) {
     then = performance.now();
     startTime = then;
     update();
+}
+//Inicializando o fps do update controller
+
+function startUpdateController(fps) {
+    fpsIntervalController = 1000 / fps;
+    thenController = performance.now();
+    startTimeController = thenController;
+    updateController();
+}
+
+//Update dos controles/movimentos (vai rodar em um fps diferente pra ser melhor de controlar)
+function updateController(){
+    window.requestAnimationFrame(updateController);
+    if (getState() === states.idle) return;
+
+    //calcumos desde o ultimo loop
+    nowController = performance.now();
+    elapsedController = nowController - thenController;
+
+    //se for fazemos o movimenot
+    if (elapsedController > fpsIntervalController) {
+        thenController = nowController - (elapsedController % fpsIntervalController);
+        
+        Bob.update();
+        Botanico.update();
+    }
 }
 
 //Update que vai rodar de acordo com o fps que setamos quando for chamado
@@ -120,5 +148,6 @@ startTutorial();
 startEndgameController();
 
 //Metodo update
-startUpdate(45);
+startUpdate(24);
+startUpdateController(60);
 update();
