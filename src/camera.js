@@ -11,7 +11,7 @@ function clamp(value, min, max) {
 }
 
 //Variavel que vai ser usada pra controlar o tamanho do "mundo"
-const worldBounds = { minX: 0, maxX: 1960, minY: 0, maxY: 540 };
+const worldBounds = { minX: 0, maxX: 3960, minY: 0, maxY: 540 };
 //Variavel que vai ser usado pra controlar X da camera
 var camX = 0;
 

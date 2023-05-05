@@ -8,6 +8,7 @@ import startEndgame, { startEndgameController } from "./endgame.js";
 import { changeState, getState, states } from "./state.js";
 import { loadCharactersAssets, loadMenuAssets } from "./loader.js";
 import { updateCamera } from "./camera.js";
+import { drawMapa, drawMapaFront, loadMapa } from "./mapa.js";
 
 //Variaveis locais para o canvas e o context
 var canvas;
@@ -22,6 +23,7 @@ export var winner;
 function startApp() {
     changeState(states.idle, "Starting app");
     loadMenuAssets();
+    loadMapa();
     loadCharactersAssets();
 }
 //Funcao de inicio pra setar as variaveis locais e o tamanho do canvas
@@ -101,11 +103,13 @@ function update() {
 
         //check pra animacao inicial
         if (getState() !== states.playing) menuAnimation();
+        drawMapa();
         Bob.draw();
         Botanico.draw();
+        drawMapaFront();
     }
     //check do fim de jogo
-    if (Bob.position.x > 1960 || Botanico.position.x > 1960) {
+    if (Bob.position.x > 3960 || Botanico.position.x > 3960) {
         if (Bob.position.x > Botanico.position.x) {
             Bob.score += 50;
             winner = "BOB";
