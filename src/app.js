@@ -41,7 +41,7 @@ export function getCanvas() {
 }
 export function clearCanvas() {
     //Precisamos fazer isso pra sempre limpar a tela no transform atual (camera)
-    c2d.clearRect(0, 0, 1960, canvas.height);
+    c2d.clearRect(0, 0, 3960, canvas.height);
 }
 
 //Variaveis pra controlar o fps

@@ -23,7 +23,7 @@ export function getAsset(name, map = "menu") {
 export function finishLoading() {
     document.getElementById("loading").style.display = "none";
     document.getElementById("menu").style.display = "block";
-    document.getElementById("menu").style.animation = "scale .75s ease-in-out";
+    document.getElementById("menu").style.animation = "scale 1.75s ease-in-out";
     changeState(states.cutscene, "Finished loading menu");
     console.log("finished loading the menu assets");
 }
