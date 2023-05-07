@@ -35,11 +35,11 @@ function next() {
     if (tutorialState < tutorialAmt - 1) tutorialState++;
     document.getElementById(
         "tutorial_img"
-    ).src = `./assets/tutorial/tutorial_${tutorialState}.jpeg`;
+    ).src = `./assets/tutorial/tutorial_${tutorialState}.png`;
 }
 function anterior() {
     if (tutorialState > 0) tutorialState--;
     document.getElementById(
         "tutorial_img"
-    ).src = `./assets/tutorial/tutorial_${tutorialState}.jpeg`;
+    ).src = `./assets/tutorial/tutorial_${tutorialState}.png`;
 }

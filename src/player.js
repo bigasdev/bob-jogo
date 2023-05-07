@@ -74,17 +74,17 @@ class Player {
             this.position.x += this.speed;
         }
         if (keys.a.pressed) {
-            if(this.position.x > 0) this.position.x -= this.speed;
+            if (this.position.x > 0) this.position.x -= this.speed;
         }
         if (keys.w.pressed && this.jumped === false) {
-            if (this.position.y < 240) return;
+            if (this.position.y < 300) return;
             this.jumped = true;
         }
         this.gravity();
     }
 
     gravity() {
-        if (this.position.y >= 250) return;
+        if (this.position.y >= 310) return;
         this.position.y += 7.5;
     }
 }
@@ -164,7 +164,7 @@ class BotanicoClass {
     }
 
     update() {
-        console.log('tet botanico');
+        console.log("tet botanico");
         this.jump();
 
         //Controle das animacoes, dps vai ser reforumlado pra um state controller
@@ -173,7 +173,7 @@ class BotanicoClass {
             if (this.jumped === false) this.moving = true;
         }
         if (keys.ArrowLeft.pressed) {
-            if(this.position.x > 0)this.position.x -= this.speed;
+            if (this.position.x > 0) this.position.x -= this.speed;
             if (this.jumped === false) this.moving = true;
         }
         if (
@@ -186,7 +186,7 @@ class BotanicoClass {
             this.moving = false;
         }
         if (keys.ArrowUp.pressed) {
-            if (this.position.y < 320) return;
+            if (this.position.y < 380) return;
             this.spriteName = "Armature_Pulando_";
             this.currentFrame = 0;
             this.maxFrames = 24;
@@ -197,7 +197,7 @@ class BotanicoClass {
     }
 
     gravity() {
-        if (this.position.y >= 330) {
+        if (this.position.y >= 390) {
             this.falling = false;
             return;
         }
@@ -212,9 +212,9 @@ class BotanicoClass {
 }
 
 //Exportando as variaveis que contem o bob e o botanico
-export let Bob = new Player({ x: 0, y: 240 }, { w: 1, h: 1 }, "./test.png", 5);
+export let Bob = new Player({ x: 0, y: 300 }, { w: 1, h: 1 }, "./test.png", 5);
 export let Botanico = new BotanicoClass(
-    { x: 50, y: 320 },
+    { x: 50, y: 380 },
     { w: 1, h: 1 },
     "./test.png",
     5
