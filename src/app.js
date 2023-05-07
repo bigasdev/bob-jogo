@@ -9,6 +9,7 @@ import { changeState, getState, states } from "./state.js";
 import { loadCharactersAssets, loadMenuAssets } from "./loader.js";
 import { updateCamera } from "./camera.js";
 import { drawMapa, drawMapaFront, loadMapa } from "./mapa.js";
+import { drawPowerups, loadPowerups } from "./powerup.js";
 
 //Variaveis locais para o canvas e o context
 var canvas;
@@ -24,6 +25,7 @@ function startApp() {
     changeState(states.idle, "Starting app");
     loadMenuAssets();
     loadMapa();
+    loadPowerups();
     loadCharactersAssets();
 }
 //Funcao de inicio pra setar as variaveis locais e o tamanho do canvas
@@ -47,7 +49,12 @@ export function clearCanvas() {
 //Variaveis pra controlar o fps
 var fps, fpsInterval, startTime, now, then, elapsed;
 //Variaveis pra controlar o fps do controller
-var fpsController, fpsIntervalController, startTimeController, nowController, thenController, elapsedController;
+var fpsController,
+    fpsIntervalController,
+    startTimeController,
+    nowController,
+    thenController,
+    elapsedController;
 
 // Inicializando com fps, no nosso caso vai ser 60
 
@@ -67,7 +74,7 @@ function startUpdateController(fps) {
 }
 
 //Update dos controles/movimentos (vai rodar em um fps diferente pra ser melhor de controlar)
-function updateController(){
+function updateController() {
     window.requestAnimationFrame(updateController);
     if (getState() === states.idle) return;
 
@@ -77,8 +84,9 @@ function updateController(){
 
     //se for fazemos o movimenot
     if (elapsedController > fpsIntervalController) {
-        thenController = nowController - (elapsedController % fpsIntervalController);
-        
+        thenController =
+            nowController - (elapsedController % fpsIntervalController);
+
         Bob.update();
         Botanico.update();
     }
@@ -106,6 +114,7 @@ function update() {
         drawMapa();
         Bob.draw();
         Botanico.draw();
+        drawPowerups();
         drawMapaFront();
     }
     //check do fim de jogo
