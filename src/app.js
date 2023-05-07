@@ -118,7 +118,7 @@ function update() {
         drawMapaFront();
     }
     //check do fim de jogo
-    if (Bob.position.x > 3960 || Botanico.position.x > 3960) {
+    if (Bob.position.x > 3930 || Botanico.position.x > 3960) {
         if (Bob.position.x > Botanico.position.x) {
             Bob.score += 50;
             winner = "BOB";
