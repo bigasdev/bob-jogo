@@ -1,3 +1,4 @@
+//Script que vai ser responsavel pela pagina do tutorial
 import { changeState, states } from "./state.js";
 
 export default function startTutorialApp() {

@@ -1,4 +1,5 @@
 import { getCanvas } from "./app.js";
+import startCreditos, { closeCreditos } from "./creditos.js";
 import { getAsset } from "./loader.js";
 import { changeState, states } from "./state.js";
 import startTutorialApp from "./tutorial.js";
@@ -31,6 +32,7 @@ export function restart() {
     document.getElementById("menu").style.display = "block";
     changeSairState(false);
     closeTutorial();
+    closeCreditos();
     changeState(states.paused);
 }
 
@@ -45,6 +47,7 @@ function tutorialButton() {
 }
 function creditosButton() {
     changeSairState(true);
+    startCreditos();
 }
 
 //Animacao do menu
