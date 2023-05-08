@@ -9,7 +9,11 @@ import { changeState, getState, states } from "./state.js";
 import { loadCharactersAssets, loadMenuAssets } from "./loader.js";
 import { updateCamera } from "./camera.js";
 import { drawMapa, drawMapaFront, loadMapa } from "./mapa.js";
-import { drawPowerups, loadPowerups } from "./powerup.js";
+import {
+    checkPowerupCollision,
+    drawPowerups,
+    loadPowerups,
+} from "./powerup.js";
 
 //Variaveis locais para o canvas e o context
 var canvas;
@@ -89,6 +93,8 @@ function updateController() {
 
         Bob.update();
         Botanico.update();
+        checkPowerupCollision(Bob);
+        checkPowerupCollision(Botanico);
     }
 }
 

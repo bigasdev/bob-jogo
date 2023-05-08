@@ -217,10 +217,15 @@ class BotanicoClass {
 }
 
 //Exportando as variaveis que contem o bob e o botanico
-export let Bob = new Player({ x: 0, y: 300 }, { w: 1, h: 1 }, "./test.png", 5);
+export let Bob = new Player(
+    { x: 0, y: 300 },
+    { w: 140, h: 193 },
+    "./test.png",
+    5
+);
 export let Botanico = new BotanicoClass(
     { x: 50, y: 380 },
-    { w: 1, h: 1 },
+    { w: 116, h: 113 },
     "./test.png",
     5
 );

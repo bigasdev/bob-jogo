@@ -38,6 +38,7 @@ let gamePowerups = [];
 //numero de powerups por game
 let amountOfPowerups = 15;
 
+//aqui a gente carrega a imagem de cada powerup
 export function loadPowerups() {
     console.log(powerups[0]);
     for (let powerup in powerups) {
@@ -63,6 +64,21 @@ export function spawnPowerups() {
             x: x,
             y: y,
         });
+    }
+}
+
+//funcao pra checar as collisions
+export function checkPowerupCollision(player) {
+    if (getState() !== states.playing) return;
+    for (let i = 0; i < gamePowerups.length; i++) {
+        if (
+            player.position.x < gamePowerups[i].x + 101 &&
+            player.position.x + player.size.w > gamePowerups[i].x &&
+            player.position.y < gamePowerups[i].y + 102 &&
+            player.position.y + player.size.h > gamePowerups[i].y
+        ) {
+            gamePowerups.splice(i, 1);
+        }
     }
 }
 
