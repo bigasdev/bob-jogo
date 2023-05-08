@@ -1,21 +1,25 @@
 import { getCanvas } from "./app.js";
 import startCreditos, { closeCreditos } from "./creditos.js";
-import { getAsset } from "./loader.js";
+import { getAsset, menuClick, quackQuack } from "./loader.js";
 import { changeState, states } from "./state.js";
 import startTutorialApp from "./tutorial.js";
 import { closeTutorial } from "./tutorial.js";
 
 export function startButtons() {
     document.getElementById("voltar").addEventListener("click", () => {
+        menuClick.play();
         restart();
     });
     document.getElementById("start").addEventListener("click", () => {
+        menuClick.play();
         playButton();
     });
     document.getElementById("instrucoes").addEventListener("click", () => {
+        menuClick.play();
         tutorialButton();
     });
     document.getElementById("creditos").addEventListener("click", () => {
+        menuClick.play();
         creditosButton();
     });
 }
@@ -56,6 +60,8 @@ let folderName = "Entrando";
 let animName = "Armature_Entrando_";
 let animSprite;
 
+let quackSom = false;
+
 //Inicializando o menu pra ter o sprite
 export function startMenuAnimation() {
     getCanvas().drawImage(getAsset(`${animName}${animIndex}`), 0, 0);
@@ -63,6 +69,10 @@ export function startMenuAnimation() {
 //Mudando o sprite a cada frame
 export function menuAnimation() {
     animIndex++;
+    if (animIndex > 60 && !quackSom) {
+        quackQuack.play();
+        quackSom = true;
+    }
     if (animIndex > 80) {
         animIndex = 0;
         animName = "Armature_Fundo_";

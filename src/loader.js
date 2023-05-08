@@ -7,6 +7,12 @@ var bobAssets = new Map();
 //Mapa do botanico
 var botanicoAssets = new Map();
 
+//Audios
+export const menuClick = new Audio("./assets/sons/menu-click.mp3");
+export const quackQuack = new Audio("./assets/sons/quackquack.mp3");
+export const botanicoPulando = new Audio("./assets/sons/botanico-pulando.mp3");
+export const bobPulando = new Audio("./assets/sons/bob-pulo.mp3");
+
 //Funcoes pra pegar o Image de um asset
 export function getAsset(name, map = "menu") {
     var a = assets.get(name);

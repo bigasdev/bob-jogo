@@ -1,83 +1,92 @@
 export const keys = {
     a: {
-        pressed: false
+        pressed: false,
     },
     d: {
-        pressed: false
+        pressed: false,
     },
     w: {
-        pressed: false
+        pressed: false,
+    },
+    e: {
+        pressed: false,
     },
     ArrowLeft: {
-        pressed: false
+        pressed: false,
     },
     ArrowRight: {
-        pressed: false
+        pressed: false,
     },
-    ArrowUp:{
-        pressed: false
-    }
-}
+    ArrowUp: {
+        pressed: false,
+    },
+};
 
 export let keyPressed;
 
 //metodo pra adicionar os inputs no keydown e up
-export function startController(){
-    window.addEventListener('keydown', (event) => {
+export function startController() {
+    window.addEventListener("keydown", (event) => {
         switch (event.key) {
-            case 'd':
+            case "d":
                 keys.d.pressed = true;
-                keyPressed = 'd';
-            break
-    
-            case 'a':
+                keyPressed = "d";
+                break;
+
+            case "a":
                 keys.a.pressed = true;
-                keyPressed = 'a';
-            break
-            case 'w':
+                keyPressed = "a";
+                break;
+            case "w":
                 keys.w.pressed = true;
-                keyPressed = 'w';
-            break
-    
+                keyPressed = "w";
+                break;
+            case "e":
+                keys.e.pressed = true;
+                break;
+
             // player2 keys
-            case 'ArrowRight':
+            case "ArrowRight":
                 keys.ArrowRight.pressed = true;
-                
-            break
-            case 'ArrowLeft':
+
+                break;
+            case "ArrowLeft":
                 keys.ArrowLeft.pressed = true;
-                
-            break
-            case 'ArrowUp':
+
+                break;
+            case "ArrowUp":
                 keys.ArrowUp.pressed = true;
-            break
-            
+                break;
         }
-       console.log(event.key) 
-    })
-    
-    window.addEventListener('keyup', (event) => {
+        console.log(event.key);
+    });
+
+    window.addEventListener("keyup", (event) => {
         switch (event.key) {
-            case 'd':
+            case "d":
                 keys.d.pressed = false;
-            break
-            case 'a':
+                break;
+            case "a":
                 keys.a.pressed = false;
-            break
-            case 'w':
+                break;
+            case "w":
                 keys.w.pressed = false;
-            break
-            
+                break;
+
+            case "e":
+                keys.e.pressed = false;
+                break;
+
             //player2 keys
-            case 'ArrowRight':
+            case "ArrowRight":
                 keys.ArrowRight.pressed = false;
-            break
-            case 'ArrowLeft':
+                break;
+            case "ArrowLeft":
                 keys.ArrowLeft.pressed = false;
-            break
-            case 'ArrowUp':
+                break;
+            case "ArrowUp":
                 keys.ArrowUp.pressed = false;
-            break;
+                break;
         }
-    })
+    });
 }

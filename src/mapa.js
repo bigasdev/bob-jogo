@@ -2,7 +2,6 @@ import { getCanvas } from "./app.js";
 import { getState, states } from "./state.js";
 
 //script utilizado para a criacao do mapa
-
 class Parede {
     constructor(x, y) {
         this.x = x;
@@ -63,9 +62,9 @@ export function loadMapa() {
 export function updateFlor() {
     if (getState() !== states.playing) return;
     if (flor.y > 370) {
-        flor.y -= 0.25;
+        flor.y -= 0.5;
     } else if (flor.y < 370) {
-        flor.y += 0.25;
+        flor.y += 0.5;
     }
 }
 
