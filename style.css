@@ -214,3 +214,30 @@ button:hover {
 #loading img {
     animation: loading 1.5s infinite ease-in-out;
 }
+#cutscene {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+}
+@keyframes showing {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+#cutscene img {
+    animation: showing 2s ease-in-out;
+    position: fixed;
+}
+#cutscene #fundo {
+    margin-left: -30rem;
+    margin-top: -16.85rem;
+}
+#images {
+    margin-left: -28rem;
+    margin-top: -16rem;
+}
