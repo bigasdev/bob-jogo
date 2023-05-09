@@ -1,5 +1,6 @@
 import { getCanvas } from "./app.js";
 import startCreditos, { closeCreditos } from "./creditos.js";
+import { startCutscene } from "./cutscene.js";
 import { getAsset, menuClick, quackQuack } from "./loader.js";
 import { changeState, states } from "./state.js";
 import startTutorialApp from "./tutorial.js";
@@ -43,7 +44,7 @@ export function restart() {
 function playButton() {
     changeSairState(true);
     //changeState(states.playing);
-    startTutorialApp();
+    startCutscene();
 }
 function tutorialButton() {
     changeSairState(true);

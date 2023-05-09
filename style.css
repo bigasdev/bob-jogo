@@ -219,25 +219,28 @@ button:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: inline-block;
+    display: none;
 }
 @keyframes showing {
     0% {
         opacity: 0;
+        transform: scale(1.05);
     }
     100% {
         opacity: 1;
+        transform: scale(1);
     }
 }
 #cutscene img {
-    animation: showing 2s ease-in-out;
+    animation: showing 1s ease-in-out;
     position: fixed;
 }
 #cutscene #fundo {
     margin-left: -30rem;
     margin-top: -16.85rem;
 }
-#images {
+#images img {
     margin-left: -28rem;
     margin-top: -16rem;
+    display: none;
 }
