@@ -47,6 +47,10 @@ export function resizeCanvas(width = 960, height = 540) {
     canvas.width = width;
     canvas.height = height;
 }
+//Funcao pra mudar a cor do canvas
+export function changeCanvasColor(color) {
+    canvas.style.backgroundColor = color;
+}
 
 //Funcao pra utilizar o context em outros scripts
 export function getCanvas() {

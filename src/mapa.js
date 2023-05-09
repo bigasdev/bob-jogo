@@ -35,24 +35,24 @@ let gramas = [];
 let arbusto = {
     sprite: "./assets/mapa/Arbusto.png",
     x: 0,
-    y: 300,
+    y: 380,
     image: new Image(),
 };
 let flor = {
     sprite: "./assets/mapa/Flor.png",
     x: 3890,
-    y: 360,
+    y: 440,
     image: new Image(),
 };
 
 //funcao para inicializar o mapa com os assets (parede, nuvem, grama)
 export function loadMapa() {
     for (let i = 0; i < 30; i++) {
-        paredes.push(new Parede(i * 180, 215));
+        paredes.push(new Parede(i * 180, 295));
         paredes[i].initialize();
     }
     for (let i = 0; i < 15; i++) {
-        gramas.push(new Grama(i * 540, 480));
+        gramas.push(new Grama(i * 540, 560));
         gramas[i].initialize();
     }
     arbusto.image.src = arbusto.sprite;

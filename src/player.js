@@ -77,7 +77,7 @@ class Player {
             if (this.position.x > 0) this.position.x -= this.speed;
         }
         if (keys.w.pressed && this.jumped === false) {
-            if (this.position.y < 300) return;
+            if (this.position.y < 380) return;
             bobPulando.play();
             this.jumped = true;
         }
@@ -85,7 +85,7 @@ class Player {
     }
 
     gravity() {
-        if (this.position.y >= 310) return;
+        if (this.position.y >= 390) return;
         this.position.y += 7.5;
     }
 }
@@ -187,7 +187,7 @@ class BotanicoClass {
             this.moving = false;
         }
         if (keys.ArrowUp.pressed) {
-            if (this.position.y < 380) return;
+            if (this.position.y < 460) return;
             botanicoPulando.play();
             this.spriteName = "Armature_Pulando_";
             this.currentFrame = 0;
@@ -202,7 +202,7 @@ class BotanicoClass {
     }
 
     gravity() {
-        if (this.position.y >= 390) {
+        if (this.position.y >= 470) {
             this.falling = false;
             return;
         }
@@ -218,13 +218,13 @@ class BotanicoClass {
 
 //Exportando as variaveis que contem o bob e o botanico
 export let Bob = new Player(
-    { x: 0, y: 300 },
+    { x: 0, y: 380 },
     { w: 140, h: 193 },
     "./test.png",
     5
 );
 export let Botanico = new BotanicoClass(
-    { x: 50, y: 380 },
+    { x: 50, y: 460 },
     { w: 116, h: 113 },
     "./test.png",
     5

@@ -1,4 +1,4 @@
-import { resizeCanvas } from "./app.js";
+import { changeCanvasColor, resizeCanvas } from "./app.js";
 import { quackQuack } from "./loader.js";
 import { changeState, states } from "./state.js";
 
@@ -33,6 +33,7 @@ export function cutscenePlayer() {
     if (cutsceneValue >= cutsceneAmt) {
         closeCutscene();
         changeState(states.playing);
+        changeCanvasColor("#8ff6ff");
         resizeCanvas(1280, 700);
         return;
     }
