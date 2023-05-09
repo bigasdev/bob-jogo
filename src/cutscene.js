@@ -1,3 +1,4 @@
+import { resizeCanvas } from "./app.js";
 import { quackQuack } from "./loader.js";
 import { changeState, states } from "./state.js";
 
@@ -32,6 +33,7 @@ export function cutscenePlayer() {
     if (cutsceneValue >= cutsceneAmt) {
         closeCutscene();
         changeState(states.playing);
+        resizeCanvas(1280, 700);
         return;
     }
     if (cutsceneValue == 1 || cutsceneValue == 2) {

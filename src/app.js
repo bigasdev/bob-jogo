@@ -41,6 +41,13 @@ function startCanvas() {
     canvas.height = 540;
     //canvas.style = "";
 }
+
+//Funcao pra mudar o tamanho do canvas (in-game e menu)
+export function resizeCanvas(width = 960, height = 540) {
+    canvas.width = width;
+    canvas.height = height;
+}
+
 //Funcao pra utilizar o context em outros scripts
 export function getCanvas() {
     return c2d;

@@ -1,4 +1,4 @@
-import { getCanvas } from "./app.js";
+import { getCanvas, resizeCanvas } from "./app.js";
 import startCreditos, { closeCreditos } from "./creditos.js";
 import { startCutscene } from "./cutscene.js";
 import { getAsset, menuClick, quackQuack } from "./loader.js";
@@ -29,6 +29,7 @@ export function changeSairState(state) {
         document.getElementById("voltar").style.display = "block";
         document.getElementById("menu").style.display = "none";
     } else {
+        resizeCanvas();
         document.getElementById("voltar").style.display = "none";
     }
 }
