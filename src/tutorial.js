@@ -1,4 +1,7 @@
 //Script que vai ser responsavel pela pagina do tutorial
+import { resizeCanvas } from "./app.js";
+import { startCutscene } from "./cutscene.js";
+import { changeSairState, sairMenu } from "./menu.js";
 import { changeState, states } from "./state.js";
 
 export default function startTutorialApp() {
@@ -29,7 +32,8 @@ export function startTutorial() {
 
 function pular() {
     closeTutorial();
-    changeState(states.playing);
+    changeSairState(false);
+    startCutscene();
 }
 
 function next() {

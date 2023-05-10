@@ -34,7 +34,8 @@ class Player {
     }
 
     draw() {
-        if (getState() !== states.playing) return;
+        if (getState() !== states.playing && getState() !== states.finished)
+            return;
         console.log(`drawing, ${this.position.x}`);
 
         this.animate();
@@ -124,7 +125,8 @@ class BotanicoClass {
     }
 
     draw() {
-        if (getState() !== states.playing) return;
+        if (getState() !== states.playing && getState() !== states.finished)
+            return;
         console.log(`drawing, ${this.position.x}`);
 
         this.animate();

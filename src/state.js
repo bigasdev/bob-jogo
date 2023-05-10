@@ -11,6 +11,7 @@ export const states = {
 var currentState = states.idle;
 
 export function changeState(state, message) {
+    console.log("changing state to : " + state);
     if (currentState === state) return;
 
     if (state === states.idle) {

@@ -33,6 +33,9 @@ export function changeSairState(state) {
         document.getElementById("voltar").style.display = "none";
     }
 }
+export function sairMenu() {
+    document.getElementById("menu").style.display = "none";
+}
 
 export function restart() {
     document.getElementById("menu").style.display = "block";
@@ -43,7 +46,6 @@ export function restart() {
 }
 
 function playButton() {
-    changeSairState(true);
     //changeState(states.playing);
     startCutscene();
 }

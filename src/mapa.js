@@ -60,7 +60,7 @@ export function loadMapa() {
 }
 //funcao que vai fazer uma animacao pra flor
 export function updateFlor() {
-    if (getState() !== states.playing) return;
+    if (getState() !== states.playing && getState() !== states.finished) return;
     if (flor.y > 370) {
         flor.y -= 0.5;
     } else if (flor.y < 370) {
@@ -70,7 +70,7 @@ export function updateFlor() {
 
 //funcao para desenhar o mapa
 export function drawMapa() {
-    if (getState() !== states.playing) return;
+    if (getState() !== states.playing && getState() !== states.finished) return;
     for (let i = 0; i < paredes.length; i++) {
         console.log("mapa draw: $d", paredes[i].x);
         getCanvas().drawImage(paredes[i].image, paredes[i].x, paredes[i].y);
@@ -81,7 +81,7 @@ export function drawMapa() {
 }
 //funcao pra desenhar as coisas que ficam na frente dos jogadores
 export function drawMapaFront() {
-    if (getState() !== states.playing) return;
+    if (getState() !== states.playing && getState() !== states.finished) return;
     for (let i = 0; i < gramas.length; i++) {
         console.log("mapa draw: $d", gramas[i].x);
         getCanvas().drawImage(gramas[i].image, gramas[i].x, gramas[i].y);

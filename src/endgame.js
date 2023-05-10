@@ -6,9 +6,9 @@ import { changeState, states } from "./state.js";
 
 export default function startEndgame() {
     document.getElementById("fim_de_jogo").style.display = "block";
-    changeState(states.finished);
+    document.getElementById("black_screen").style.display = "block";
+    changeState(states.finished, "Why");
     cameraReset();
-    changeSairState(false);
 
     //mudando os textos do menu
     document.getElementById("bob_score").innerHTML = `Bob: ${Bob.score}`;
@@ -19,8 +19,9 @@ export default function startEndgame() {
 }
 
 function restartEndgame() {
+    document.getElementById("black_screen").style.display = "none";
     document.getElementById("fim_de_jogo").style.display = "none";
-    changeSairState(states.playing);
+    changeState(states.playing);
 }
 
 export function startEndgameController() {
@@ -28,6 +29,7 @@ export function startEndgameController() {
         .getElementById("fim_de_jogo_sair")
         .addEventListener("click", () => {
             document.getElementById("fim_de_jogo").style.display = "none";
+            document.getElementById("black_screen").style.display = "none";
             restart();
         });
     document

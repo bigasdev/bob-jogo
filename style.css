@@ -34,8 +34,8 @@ canvas {
 #tutorial_img {
     animation: tutorialScale 2.5s infinite alternate;
     position: absolute;
-    top: -13rem;
-    left: -23.25rem;
+    top: -17rem;
+    left: -29.25rem;
 }
 #tutorial_anterior {
     top: 13.75rem;
@@ -186,7 +186,7 @@ button:hover {
     background-size: 50%;
 }
 #fim_de_jogo {
-    background-color: purple;
+    animation: pause_popup 0.5s ease-in-out;
     width: 400px;
     height: 400px;
     position: absolute;
@@ -194,6 +194,30 @@ button:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
+}
+@keyframes pause_popup {
+    0% {
+        margin-top: -25rem;
+    }
+    100% {
+        margin-top: 0rem;
+    }
+}
+#black_screen {
+    margin-top: -2rem;
+    margin-left: -2rem;
+    position: fixed;
+    width: 120%;
+    height: 120%;
+    background-color: black;
+    opacity: 0.75;
+    display: none;
+}
+#menu_popup {
+    position: fixed;
+    margin-top: -3.5rem;
+    margin-left: -15.75rem;
+    z-index: -1;
 }
 #fim_de_jogo_sair {
     position: relative;

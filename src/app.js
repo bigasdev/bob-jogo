@@ -91,7 +91,7 @@ function startUpdateController(fps) {
 //Update dos controles/movimentos (vai rodar em um fps diferente pra ser melhor de controlar)
 function updateController() {
     window.requestAnimationFrame(updateController);
-    if (getState() === states.idle) return;
+    if (getState() === states.idle || getState() === states.finished) return;
 
     //calcumos desde o ultimo loop
     nowController = performance.now();

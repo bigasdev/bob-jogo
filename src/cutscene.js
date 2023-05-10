@@ -1,6 +1,7 @@
 import { changeCanvasColor, resizeCanvas } from "./app.js";
 import { quackQuack } from "./loader.js";
-import { changeState, states } from "./state.js";
+import { sairMenu } from "./menu.js";
+import { changeState, getState, states } from "./state.js";
 
 export function startCutscene() {
     document.getElementById("cutscene").style.display = "inline-block";
@@ -30,8 +31,10 @@ var cutsceneImgs = [
 ];
 
 export function cutscenePlayer() {
+    if (getState() != states.cutscene) return;
     if (cutsceneValue >= cutsceneAmt) {
         closeCutscene();
+        sairMenu();
         changeState(states.playing);
         changeCanvasColor("#8ff6ff");
         resizeCanvas(1280, 700);
