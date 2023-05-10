@@ -268,3 +268,28 @@ button:hover {
     margin-top: -16rem;
     display: none;
 }
+#mute_menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    z-index: 100;
+}
+.mute {
+    position: absolute;
+    background: url("./assets/menu/botao_2_Som.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    width: 80px;
+    height: 72px;
+    margin-top: -19rem;
+    margin-left: -30rem;
+}
+.mute:hover {
+    background: url("./assets/menu/botao_1_Som.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+}
