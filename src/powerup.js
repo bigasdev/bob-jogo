@@ -10,6 +10,13 @@ let powerups = [
         image: new Image(),
         x: 0,
         y: 0,
+        //funcao de quando passar pelo trevo
+        powerup: function (player) {
+            player.speed += 2;
+            setTimeout(() => {
+                player.speed -= 2;
+            }, 5000);
+        },
     },
     //abelha
     {
@@ -17,6 +24,9 @@ let powerups = [
         image: new Image(),
         x: 0,
         y: 0,
+        powerup: function () {
+            onPowerup("abelha");
+        },
     },
     //tronco
     {
@@ -24,6 +34,9 @@ let powerups = [
         image: new Image(),
         x: 0,
         y: 0,
+        powerup: function () {
+            onPowerup("tronco");
+        },
     },
     //tronco grande
     {
@@ -31,6 +44,9 @@ let powerups = [
         image: new Image(),
         x: 0,
         y: 0,
+        powerup: function () {
+            onPowerup("tronco_grande");
+        },
     },
     //mel
     {
@@ -38,18 +54,29 @@ let powerups = [
         image: new Image(),
         x: 0,
         y: 0,
+        powerup: function () {
+            onPowerup("mel");
+        },
     },
     {
         sprite: "./assets/powerups/mel_melado.png",
         image: new Image(),
         x: 0,
         y: 0,
+        powerup: function () {
+            onPowerup("mel_melado");
+        },
     },
 ];
 
 let gamePowerups = [];
 //numero de powerups por game
 let amountOfPowerups = 15;
+
+//funcao base que vai ser usada nos powerups q tem n funcao especifica
+function onPowerup(name) {
+    console.log("powerup collide : " + name);
+}
 
 //aqui a gente carrega a imagem de cada powerup
 export function loadPowerups() {
@@ -90,6 +117,8 @@ export function checkPowerupCollision(player) {
             player.position.y < gamePowerups[i].y + 102 &&
             player.position.y + player.size.h > gamePowerups[i].y
         ) {
+            console.log(gamePowerups[i]);
+            gamePowerups[i].powerup.powerup(player);
             gamePowerups.splice(i, 1);
         }
     }
