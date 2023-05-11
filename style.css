@@ -6,8 +6,7 @@
 body {
     background-color: #2a604f;
     font-family: "Segoe Print";
-    font-style: bold;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.48);
+    font-weight: bold;
     color: #00462d;
 }
 
@@ -261,8 +260,12 @@ button:hover {
     position: absolute;
     top: 50%;
     left: 50%;
+    text-align: center;
     transform: translate(-50%, -50%);
     display: none;
+}
+#fim_de_jogo p {
+    margin-top: 2rem;
 }
 @keyframes pause_popup {
     0% {
@@ -285,7 +288,7 @@ button:hover {
 #menu_popup {
     position: fixed;
     margin-top: -3.5rem;
-    margin-left: -15.75rem;
+    margin-left: -28.1rem;
     z-index: -1;
 }
 #fim_de_jogo_sair {
