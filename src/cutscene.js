@@ -4,6 +4,7 @@ import { sairMenu } from "./menu.js";
 import { changeState, getState, states } from "./state.js";
 
 export function startCutscene() {
+    changeState(states.cutscene);
     document.getElementById("cutscene").style.display = "inline-block";
     setTimeout(cutscenePlayer, cutsceneTime);
 }

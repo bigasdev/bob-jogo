@@ -1,5 +1,14 @@
+@font-face {
+    font-family: "Segoe Print";
+    src: url("./assets/fonts/segoepr.ttf");
+}
+
 body {
     background-color: #2a604f;
+    font-family: "Segoe Print";
+    font-style: bold;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.48);
+    color: #00462d;
 }
 
 canvas {
