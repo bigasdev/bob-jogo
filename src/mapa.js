@@ -59,6 +59,7 @@ export function loadMapa() {
     arbusto.image.src = arbusto.sprite;
     flor.image.src = flor.sprite;
     loadCeu();
+    loadPlataformas();
 }
 //funcao que vai fazer uma animacao pra flor
 export function updateFlor() {
@@ -81,6 +82,7 @@ export function drawMapa() {
     getCanvas().drawImage(arbusto.image, arbusto.x, arbusto.y);
     getCanvas().drawImage(flor.image, flor.x, flor.y);
     drawCeu();
+    drawPlataformas();
 }
 //funcao pra desenhar as coisas que ficam na frente dos jogadores
 export function drawMapaFront() {
@@ -175,5 +177,105 @@ export function drawCeu() {
             nuvens_intermediarias[i].x - x * 0.5,
             nuvens_intermediarias[i].y
         );
+    }
+}
+
+//parte do script que vai dar load e desenhar as plataformas
+class Plataforma {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.image = new Image();
+        this.Folha = new Folha(this.x - 20, this.y);
+        this.FolhaDireita = new FolhaDireita(this.x + 20, this.y);
+    }
+    initialize() {
+        this.image.src = plataforma.sprite;
+        this.Folha.initialize();
+        this.FolhaDireita.initialize();
+    }
+    draw() {
+        getCanvas().drawImage(this.image, this.x, this.y);
+    }
+}
+class Folha {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.image = new Image();
+        this.image.src = florEsquerda.sprite;
+    }
+    initialize() {
+        this.image.src = florEsquerda.sprite;
+    }
+    draw() {
+        getCanvas().drawImage(this.image, this.x, this.y);
+    }
+}
+class FolhaDireita {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.image = new Image();
+        this.image.src = florDireita.sprite;
+    }
+    initialize() {
+        this.image.src = florDireita.sprite;
+    }
+    draw() {
+        getCanvas().drawImage(this.image, this.x, this.y);
+    }
+}
+let plataforma = {
+    sprite: "./assets/mapa/Plataforma.png",
+    x: 0,
+    y: 0,
+    image: new Image(),
+};
+let florEsquerda = {
+    sprite: "./assets/mapa/Cacho-completo.png",
+    x: 0,
+    y: 0,
+    image: new Image(),
+};
+let florDireita = {
+    sprite: "./assets/mapa/Cacho-completo.png",
+    x: 0,
+    y: 0,
+    image: new Image(),
+};
+let plataformas = [];
+
+//Posicoes
+let xIncrease = 750;
+let yPositions = {
+    0: 400,
+    1: 300,
+    2: 350,
+};
+
+function loadPlataformas() {
+    plataforma.image.src = plataforma.sprite;
+    florEsquerda.image.src = florEsquerda.sprite;
+    florDireita.image.src = florDireita.sprite;
+    for (let i = 1; i < 10; i++) {
+        let x = i * xIncrease;
+        let y = yPositions[Math.floor(Math.random() * 3)];
+        let plataforma = new Plataforma(x, y);
+        plataforma.initialize();
+        plataformas.push({
+            plataforma: plataforma,
+            florEsquerda: plataforma.Folha,
+            florDireita: plataforma.FolhaDireita,
+        });
+    }
+}
+
+function drawPlataformas() {
+    if (getState() !== states.playing && getState() !== states.finished) return;
+    for (let i = 0; i < plataformas.length; i++) {
+        plataformas[i].plataforma.draw();
+        plataformas[i].florEsquerda.draw();
+        plataformas[i].florDireita.draw();
     }
 }

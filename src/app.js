@@ -20,7 +20,7 @@ var canvas;
 var c2d;
 
 //variaveis de controle pro jogo
-var playersDistThreshold = 760;
+var playersDistThreshold = 1760;
 export var winner;
 
 //Funcao de iniicializao pra tudo

@@ -232,6 +232,7 @@ class BotanicoClass {
             this.falling === false
         ) {
             this.spriteName = "Armature_Parado_";
+            this.maxFrames = 48;
             this.moving = false;
         }
         if (keys.ArrowUp.pressed) {
