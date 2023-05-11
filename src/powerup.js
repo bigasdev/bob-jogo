@@ -61,9 +61,9 @@ let powerups = [
         image: new Image(),
         x: 0,
         y: 0,
-        remove: false,
+        remove: true,
         //No caso do mel a gente vai diminuir bastante a velocidade do jogador
-        powerup: function () {
+        powerup: function (player) {
             player.speed -= 2;
             setTimeout(() => {
                 player.speed += 2;
@@ -76,9 +76,9 @@ let powerups = [
         image: new Image(),
         x: 0,
         y: 0,
-        remove: false,
+        remove: true,
         //No caso do mel a gente vai diminuir bastante a velocidade do jogador
-        powerup: function () {
+        powerup: function (player) {
             player.speed -= 2;
             setTimeout(() => {
                 player.speed += 2;
@@ -86,6 +86,12 @@ let powerups = [
         },
     },
 ];
+
+//export para os objetos que terao colisoes/usos especificos
+export let tronco = powerups[2];
+export let tronco_grande = powerups[3];
+export let mel = powerups[4];
+export let mel_melado = powerups[5];
 
 let gamePowerups = [];
 //numero de powerups por game
@@ -124,6 +130,14 @@ export function spawnPowerups() {
             y: y,
         });
     }
+}
+//funcao pra adicionar um powerup especifico
+export function addPowerup(powerup, x, y) {
+    gamePowerups.push({
+        powerup: powerup,
+        x: x,
+        y: y,
+    });
 }
 
 //funcao pra checar as collisions

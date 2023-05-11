@@ -1,5 +1,12 @@
 import { getCanvas } from "./app.js";
 import { camX } from "./camera.js";
+import {
+    addPowerup,
+    mel,
+    mel_melado,
+    tronco,
+    tronco_grande,
+} from "./powerup.js";
 import { getState, states } from "./state.js";
 
 //script utilizado para a criacao do mapa
@@ -209,7 +216,7 @@ class Plataforma {
         this.y = y;
         this.image = new Image();
         this.Folha = new Folha(this.x - 20, this.y);
-        this.FolhaDireita = new FolhaDireita(this.x + 20, this.y);
+        this.FolhaDireita = new FolhaDireita(this.x + 130, this.y);
     }
     initialize() {
         this.image.src = plataforma.sprite;
@@ -261,7 +268,7 @@ let florEsquerda = {
     image: new Image(),
 };
 let florDireita = {
-    sprite: "./assets/mapa/Cacho-completo.png",
+    sprite: "./assets/mapa/Cacho-reverso.png",
     x: 0,
     y: 0,
     image: new Image(),
@@ -283,6 +290,16 @@ function loadPlataformas() {
     for (let i = 1; i < 10; i++) {
         let x = i * xIncrease;
         let y = yPositions[Math.floor(Math.random() * 3)];
+        //Aqui vamos adicionar os troncos perto de toda platforma
+        {
+            var _tronco;
+            if (y === 300) {
+                _tronco = tronco_grande;
+            } else {
+                _tronco = tronco;
+            }
+            addPowerup(_tronco, x - 100, 490);
+        }
         let plataforma = new Plataforma(x, y);
         plataforma.initialize();
         plataformas.push({
@@ -290,6 +307,12 @@ function loadPlataformas() {
             florEsquerda: plataforma.Folha,
             florDireita: plataforma.FolhaDireita,
         });
+        //Check aleatorio pra ver se a plataforma vai ter mel ou nao (40% de chance)
+        if (Math.random() < 0.4) {
+            //Check aleatorio de 50% pra ver qual tipo de mel (apenas grafico)
+            let _mel = Math.random() < 0.5 ? mel : mel_melado;
+            addPowerup(_mel, x, y - 50);
+        }
     }
 }
 
@@ -297,6 +320,11 @@ function drawPlataformas() {
     if (getState() !== states.playing && getState() !== states.finished) return;
     for (let i = 0; i < plataformas.length; i++) {
         plataformas[i].plataforma.draw();
+    }
+}
+export function drawPlataformasPlantas() {
+    if (getState() !== states.playing && getState() !== states.finished) return;
+    for (let i = 0; i < plataformas.length; i++) {
         plataformas[i].florEsquerda.draw();
         plataformas[i].florDireita.draw();
     }

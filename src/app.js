@@ -8,7 +8,12 @@ import startEndgame, { startEndgameController } from "./endgame.js";
 import { changeState, getState, states } from "./state.js";
 import { loadCharactersAssets, loadMenuAssets } from "./loader.js";
 import { updateCamera } from "./camera.js";
-import { drawMapa, drawMapaFront, loadMapa } from "./mapa.js";
+import {
+    drawMapa,
+    drawMapaFront,
+    drawPlataformasPlantas,
+    loadMapa,
+} from "./mapa.js";
 import {
     checkPowerupCollision,
     drawPowerups,
@@ -133,6 +138,7 @@ function update() {
         Bob.draw();
         Botanico.draw();
         drawPowerups();
+        drawPlataformasPlantas();
         drawMapaFront();
     }
     //check do fim de jogo
