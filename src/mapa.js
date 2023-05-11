@@ -80,7 +80,12 @@ export function updateFlor() {
 
 //funcao para desenhar o mapa
 export function drawMapa() {
-    if (getState() !== states.playing && getState() !== states.finished) return;
+    if (
+        getState() !== states.playing &&
+        getState() !== states.finished &&
+        getState() !== states.paused
+    )
+        return;
     for (let i = 0; i < paredes.length; i++) {
         getCanvas().drawImage(paredes[i].image, paredes[i].x, paredes[i].y);
     }
@@ -92,7 +97,12 @@ export function drawMapa() {
 }
 //funcao pra desenhar as coisas que ficam na frente dos jogadores
 export function drawMapaFront() {
-    if (getState() !== states.playing && getState() !== states.finished) return;
+    if (
+        getState() !== states.playing &&
+        getState() !== states.finished &&
+        getState() !== states.paused
+    )
+        return;
     for (let i = 0; i < gramas.length; i++) {
         getCanvas().drawImage(gramas[i].image, gramas[i].x, gramas[i].y);
     }
@@ -183,7 +193,12 @@ export function loadCeu() {
 }
 //funcao pra desenhar o ceu com parallax com a camera
 export function drawCeu() {
-    if (getState() !== states.playing && getState() !== states.finished) return;
+    if (
+        getState() !== states.playing &&
+        getState() !== states.finished &&
+        getState() !== states.paused
+    )
+        return;
     let x = camX;
     let canvas = getCanvas();
     for (let i = 0; i < ceuAmount; i++) {
@@ -315,13 +330,23 @@ function loadPlataformas() {
 }
 
 function drawPlataformas() {
-    if (getState() !== states.playing && getState() !== states.finished) return;
+    if (
+        getState() !== states.playing &&
+        getState() !== states.finished &&
+        getState() !== states.paused
+    )
+        return;
     for (let i = 0; i < plataformas.length; i++) {
         plataformas[i].plataforma.draw();
     }
 }
 export function drawPlataformasPlantas() {
-    if (getState() !== states.playing && getState() !== states.finished) return;
+    if (
+        getState() !== states.playing &&
+        getState() !== states.finished &&
+        getState() !== states.paused
+    )
+        return;
     for (let i = 0; i < plataformas.length; i++) {
         plataformas[i].florEsquerda.draw();
         plataformas[i].florDireita.draw();

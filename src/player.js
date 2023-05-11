@@ -61,7 +61,11 @@ class Player {
     }
 
     draw() {
-        if (getState() !== states.playing && getState() !== states.finished)
+        if (
+            getState() !== states.playing &&
+            getState() !== states.finished &&
+            getState() !== states.paused
+        )
             return;
 
         this.animate();
@@ -169,7 +173,11 @@ class BotanicoClass {
     }
 
     draw() {
-        if (getState() !== states.playing && getState() !== states.finished)
+        if (
+            getState() !== states.playing &&
+            getState() !== states.finished &&
+            getState() !== states.paused
+        )
             return;
 
         this.animate();

@@ -2,6 +2,7 @@ import { getCanvas, resizeCanvas } from "./app.js";
 import startCreditos, { closeCreditos } from "./creditos.js";
 import { startCutscene } from "./cutscene.js";
 import { getAsset } from "./loader.js";
+import { enablePause } from "./pause.js";
 import {
     ajustarBotaoMute,
     menuClick,
@@ -50,7 +51,8 @@ export function restart() {
     changeSairState(false);
     closeTutorial();
     closeCreditos();
-    changeState(states.paused);
+    enablePause(false);
+    changeState(states.cutscene);
 }
 
 function playButton() {

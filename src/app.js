@@ -135,7 +135,7 @@ function update() {
         then = now - (elapsed % fpsInterval);
 
         //check pra animacao inicial
-        if (getState() !== states.playing) menuAnimation();
+        if (getState() === states.cutscene) menuAnimation();
         drawMapa();
         Bob.draw();
         Botanico.draw();
