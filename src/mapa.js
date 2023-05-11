@@ -92,91 +92,113 @@ export function drawMapaFront() {
         getCanvas().drawImage(gramas[i].image, gramas[i].x, gramas[i].y);
     }
 }
-let ceu = {
-    nuvens_intermediarias: [
-        {
-            sprite: "./assets/mapa/1_Intermediaria.png",
-            x: 400,
-            y: 100,
-            image: new Image(),
-        },
-        {
-            sprite: "./assets/mapa/2_Intermediaria.png",
-            x: 100,
-            y: 100,
-            image: new Image(),
-        },
-        {
-            sprite: "./assets/mapa/3_Intermediaria.png",
-            x: 200,
-            y: 100,
-            image: new Image(),
-        },
-    ],
-    nuvens_grande: [
-        {
-            sprite: "./assets/mapa/1_Nuvem-Grande.png",
-            x: 0,
-            y: 300,
-            image: new Image(),
-        },
-        {
-            sprite: "./assets/mapa/2_Nuvem-Grande.png",
-            x: 0,
-            y: -700,
-            image: new Image(),
-        },
-        {
-            sprite: "./assets/mapa/3_Nuvem-Grande.png",
-            x: 0,
-            y: 300,
-            image: new Image(),
-        },
-    ],
-    nuvens_pequena: [
-        {
-            sprite: "./assets/mapa/1_Nuvenzinha.png",
-            x: 0,
-            y: 200,
-            image: new Image(),
-        },
-        {
-            sprite: "./assets/mapa/2_Nuvenzinha.png",
-            x: 0,
-            y: 650,
-            image: new Image(),
-        },
-        {
-            sprite: "./assets/mapa/3_Nuvenzinha.png",
-            x: 0,
-            y: 200,
-            image: new Image(),
-        },
-    ],
-};
+//Classe do ceu pois vamos precisar de muitas nuvens
+class Ceu {
+    constructor(x) {
+        this.nuvens_intermediarias = [
+            {
+                sprite: "./assets/mapa/1_Intermediaria.png",
+                x: -1700 + x,
+                y: 100,
+                image: new Image(),
+            },
+            {
+                sprite: "./assets/mapa/2_Intermediaria.png",
+                x: 0 + x,
+                y: 100,
+                image: new Image(),
+            },
+            {
+                sprite: "./assets/mapa/3_Intermediaria.png",
+                x: 1700 + x,
+                y: 100,
+                image: new Image(),
+            },
+        ];
+        this.nuvens_grande = [
+            {
+                sprite: "./assets/mapa/1_Nuvem-Grande.png",
+                x: -1800 + x,
+                y: -50,
+                image: new Image(),
+            },
+            {
+                sprite: "./assets/mapa/2_Nuvem-Grande.png",
+                x: 0 + x,
+                y: -50,
+                image: new Image(),
+            },
+            {
+                sprite: "./assets/mapa/3_Nuvem-Grande.png",
+                x: 1800 + x,
+                y: -50,
+                image: new Image(),
+            },
+        ];
+        this.nuvens_pequena = [
+            {
+                sprite: "./assets/mapa/1_Nuvenzinha.png",
+                x: -1400 + x,
+                y: 225,
+                image: new Image(),
+            },
+            {
+                sprite: "./assets/mapa/2_Nuvenzinha.png",
+                x: 0 + x,
+                y: 225,
+                image: new Image(),
+            },
+            {
+                sprite: "./assets/mapa/3_Nuvenzinha.png",
+                x: 1400 + x,
+                y: 225,
+                image: new Image(),
+            },
+        ];
+    }
+}
+
+//variaveis pra criar o ceu
+let ceuCompleto = [];
+let ceuAmount = 15;
+
 //funcao para inicializar o ceu com os assets (nuvens)
 export function loadCeu() {
-    for (let i = 0; i < 3; i++) {
-        ceu.nuvens_intermediarias[i].image.src =
-            ceu.nuvens_intermediarias[i].sprite;
-        ceu.nuvens_grande[i].image.src = ceu.nuvens_grande[i].sprite;
-        ceu.nuvens_pequena[i].image.src = ceu.nuvens_pequena[i].sprite;
+    for (let i = 0; i < ceuAmount; i++) {
+        ceuCompleto.push(new Ceu(i * 500));
+        for (let j = 0; j < 3; j++) {
+            ceuCompleto[i].nuvens_intermediarias[j].image.src =
+                ceuCompleto[i].nuvens_intermediarias[j].sprite;
+            ceuCompleto[i].nuvens_grande[j].image.src =
+                ceuCompleto[i].nuvens_grande[j].sprite;
+            ceuCompleto[i].nuvens_pequena[j].image.src =
+                ceuCompleto[i].nuvens_pequena[j].sprite;
+        }
     }
 }
 //funcao pra desenhar o ceu com parallax com a camera
 export function drawCeu() {
     if (getState() !== states.playing && getState() !== states.finished) return;
     let x = camX;
-    let nuvens_intermediarias = ceu.nuvens_intermediarias;
-    let nuvens_grande = ceu.nuvens_grande;
-    let nuvens_pequena = ceu.nuvens_pequena;
     let canvas = getCanvas();
-    for (let i = 0; i < 3; i++) {
-        canvas.drawImage(
-            nuvens_intermediarias[i].image,
-            nuvens_intermediarias[i].x - x * 0.5,
-            nuvens_intermediarias[i].y
-        );
+    for (let i = 0; i < ceuAmount; i++) {
+        for (let j = 0; j < 3; j++) {
+            canvas.drawImage(
+                ceuCompleto[i].nuvens_intermediarias[j].image,
+                ceuCompleto[i].nuvens_intermediarias[j].x - x * 0.5,
+                ceuCompleto[i].nuvens_intermediarias[j].y
+            );
+            canvas.drawImage(
+                ceuCompleto[i].nuvens_grande[j].image,
+                ceuCompleto[i].nuvens_grande[j].x - x * 0.15,
+                ceuCompleto[i].nuvens_grande[j].y
+            );
+            canvas.drawImage(
+                ceuCompleto[i].nuvens_pequena[j].image,
+                ceuCompleto[i].nuvens_pequena[j].x - x * 0.75,
+                ceuCompleto[i].nuvens_pequena[j].y
+            );
+        }
     }
 }
 
