@@ -6,7 +6,7 @@ import { getState, states } from "./state.js";
 let powerups = [
     //trevo
     {
-        sprite: "./assets/powerups/abelha.png",
+        sprite: "./assets/powerups/trevo.png",
         image: new Image(),
         x: 0,
         y: 0,
@@ -18,16 +18,29 @@ let powerups = [
         x: 0,
         y: 0,
     },
-    //mel
+    //tronco
     {
-        sprite: "./assets/powerups/abelha.png",
+        sprite: "./assets/powerups/tronco.png",
         image: new Image(),
         x: 0,
         y: 0,
     },
-    //tronco
+    //tronco grande
     {
-        sprite: "./assets/powerups/abelha.png",
+        sprite: "./assets/powerups/troncozao.png",
+        image: new Image(),
+        x: 0,
+        y: 0,
+    },
+    //mel
+    {
+        sprite: "./assets/powerups/mel.png",
+        image: new Image(),
+        x: 0,
+        y: 0,
+    },
+    {
+        sprite: "./assets/powerups/mel_melado.png",
         image: new Image(),
         x: 0,
         y: 0,

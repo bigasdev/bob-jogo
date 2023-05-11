@@ -13,7 +13,7 @@ function clamp(value, min, max) {
 //Variavel que vai ser usada pra controlar o tamanho do "mundo"
 const worldBounds = { minX: 0, maxX: 3960, minY: 0, maxY: 540 };
 //Variavel que vai ser usado pra controlar X da camera
-var camX = 0;
+export var camX = 0;
 
 //Funcao que vai ser usada no update pra controlar a camera
 export function updateCamera(canvas, ctx, bobPos, botanicoPos) {

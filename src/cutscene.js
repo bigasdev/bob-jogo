@@ -1,5 +1,5 @@
 import { changeCanvasColor, resizeCanvas } from "./app.js";
-import { quackQuack } from "./som.js";
+import { playSound, quackQuack } from "./som.js";
 import { sairMenu } from "./menu.js";
 import { changeState, getState, states } from "./state.js";
 
@@ -46,7 +46,7 @@ export function cutscenePlayer() {
         cutsceneTime = 3000;
     }
     if (cutsceneValue == 3) {
-        quackQuack.play();
+        playSound(quackQuack);
     }
     document.getElementById(cutsceneImgs[cutsceneValue]).style.display =
         "block";

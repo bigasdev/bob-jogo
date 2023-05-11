@@ -4,7 +4,7 @@ import { getState, states } from "./state.js";
 import { getCanvas, clearCanvas } from "./app.js";
 import { keyPressed, keys } from "./controller.js";
 import { getAsset } from "./loader.js";
-import { bobPulando, botanicoPulando, quackQuack } from "./som.js";
+import { bobPulando, botanicoPulando, playSound, quackQuack } from "./som.js";
 
 //Classe de construcao do bob
 class Player {
@@ -80,7 +80,7 @@ class Player {
         }
         if (keys.w.pressed && this.jumped === false) {
             if (this.position.y < 380) return;
-            bobPulando.play();
+            playSound(bobPulando);
             this.jumped = true;
         }
         this.gravity();
@@ -191,7 +191,7 @@ class BotanicoClass {
         }
         if (keys.ArrowUp.pressed) {
             if (this.position.y < 460) return;
-            botanicoPulando.play();
+            playSound(botanicoPulando);
             this.spriteName = "Armature_Pulando_";
             this.currentFrame = 0;
             this.maxFrames = 24;
@@ -199,7 +199,7 @@ class BotanicoClass {
             this.jumped = true;
         }
         if (keys.e.pressed) {
-            quackQuack.play();
+            playSound(quackQuack);
         }
         this.gravity();
     }
