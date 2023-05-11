@@ -86,6 +86,36 @@ button:hover {
     cursor: pointer;
     transform: scale(1.05);
 }
+.reiniciar {
+    float: left;
+    background: url("./assets/menu/reiniciar.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    width: 275px;
+    height: 100px;
+}
+.reiniciar:hover {
+    background: url("./assets/menu/reiniciar_hover.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+}
+.anterior {
+    float: left;
+    background: url("./assets/menu/anterior.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    width: 275px;
+    height: 100px;
+}
+.anterior:hover {
+    background: url("./assets/menu/anterior_hover.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+}
 .proximo {
     float: left;
     background: url("./assets/menu/proximo.png");
