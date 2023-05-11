@@ -19,11 +19,11 @@ export function playSound(sound) {
 export function muteSound() {
     isMuted = !isMuted;
     if (isMuted) {
-        document.getElementById("mute").style.background =
+        document.getElementById("mute").style.backgroundImage =
             "url('./assets/menu/botao_2_Som_Barra.png')";
         document.getElementById("musica").pause();
     } else {
-        document.getElementById("mute").style.background =
+        document.getElementById("mute").style.backgroundImage =
             "url('./assets/menu/botao_2_Som.png')";
         document.getElementById("musica").play();
     }
@@ -33,6 +33,9 @@ export function muteSound() {
 export function startSound() {
     document.getElementById("musica").volume = 0.1;
     document.getElementById("musica").play();
+
+    //fazendo o botao de mute aparecer
+    document.getElementById("mute_menu").style.display = "block";
 
     //adicionando onclick no botao de mute
     document.getElementById("mute").addEventListener("click", () => {

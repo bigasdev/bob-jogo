@@ -206,6 +206,23 @@ button:hover {
 #creditos_img img {
     animation: tutorialscale 2.5s infinite alternate;
 }
+#voltar_jogo {
+    float: left;
+    background: url("./assets/menu/botao_2_Controlinho.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    width: 80px;
+    height: 72px;
+    margin-bottom: 2rem;
+    margin-left: 10rem;
+}
+#voltar_jogo:hover {
+    background: url("./assets/menu/botao_1_Controlinho.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+}
 .sair {
     float: left;
     background: url("./assets/menu/botao_8_Sair.png");
@@ -252,6 +269,20 @@ button:hover {
     background-position: center;
     background-repeat: no-repeat;
     background-size: 50%;
+}
+#menu_pause {
+    animation: pause_popup 0.5s ease-in-out;
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+#menu_pause p {
+    margin-top: 2rem;
 }
 #fim_de_jogo {
     animation: pause_popup 0.5s ease-in-out;
@@ -345,8 +376,33 @@ button:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: block;
+    display: none;
     z-index: 100;
+}
+#pause_menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 100;
+}
+#pause_menu .pause {
+    position: absolute;
+    background: url("./assets/menu/pause_hover.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    width: 80px;
+    height: 72px;
+    margin-top: -19rem;
+    margin-left: -26rem;
+}
+#pause_menu .pause:hover {
+    background: url("./assets/menu/pause.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75%;
 }
 .mute {
     position: absolute;
