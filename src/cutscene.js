@@ -1,5 +1,5 @@
 import { changeCanvasColor, resizeCanvas } from "./app.js";
-import { quackQuack } from "./loader.js";
+import { quackQuack } from "./som.js";
 import { sairMenu } from "./menu.js";
 import { changeState, getState, states } from "./state.js";
 

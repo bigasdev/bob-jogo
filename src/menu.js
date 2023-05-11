@@ -1,26 +1,27 @@
 import { getCanvas, resizeCanvas } from "./app.js";
 import startCreditos, { closeCreditos } from "./creditos.js";
 import { startCutscene } from "./cutscene.js";
-import { getAsset, menuClick, quackQuack } from "./loader.js";
+import { getAsset } from "./loader.js";
+import { menuClick, playSound, quackQuack, startSound } from "./som.js";
 import { changeState, states } from "./state.js";
 import startTutorialApp from "./tutorial.js";
 import { closeTutorial } from "./tutorial.js";
 
 export function startButtons() {
     document.getElementById("voltar").addEventListener("click", () => {
-        menuClick.play();
+        playSound(menuClick);
         restart();
     });
     document.getElementById("start").addEventListener("click", () => {
-        menuClick.play();
+        playSound(menuClick);
         playButton();
     });
     document.getElementById("instrucoes").addEventListener("click", () => {
-        menuClick.play();
+        playSound(menuClick);
         tutorialButton();
     });
     document.getElementById("creditos").addEventListener("click", () => {
-        menuClick.play();
+        playSound(menuClick);
         creditosButton();
     });
 }
@@ -74,13 +75,14 @@ export function startMenuAnimation() {
 export function menuAnimation() {
     animIndex++;
     if (animIndex > 60 && !quackSom) {
-        quackQuack.play();
+        playSound(quackQuack);
         quackSom = true;
     }
     if (animIndex > 80) {
         animIndex = 0;
         animName = "Armature_Fundo_";
         folderName = "Fundo";
+        startSound();
     }
     if (animIndex > 64 && folderName === "Fundo") {
         animIndex = 0;

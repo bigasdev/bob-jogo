@@ -3,7 +3,8 @@
 import { getState, states } from "./state.js";
 import { getCanvas, clearCanvas } from "./app.js";
 import { keyPressed, keys } from "./controller.js";
-import { bobPulando, botanicoPulando, getAsset, quackQuack } from "./loader.js";
+import { getAsset } from "./loader.js";
+import { bobPulando, botanicoPulando, quackQuack } from "./som.js";
 
 //Classe de construcao do bob
 class Player {
