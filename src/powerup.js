@@ -10,12 +10,15 @@ let powerups = [
         image: new Image(),
         x: 0,
         y: 0,
+        //bool pra remover o powerup ou nao dps de colidir
+        remove: true,
         //funcao de quando passar pelo trevo
         powerup: function (player) {
+            //no caso do trevo vamos aumentar a velocidade do jogador por 3 segundos
             player.speed += 2;
             setTimeout(() => {
                 player.speed -= 2;
-            }, 5000);
+            }, 3000);
         },
     },
     //abelha
@@ -24,8 +27,10 @@ let powerups = [
         image: new Image(),
         x: 0,
         y: 0,
-        powerup: function () {
-            onPowerup("abelha");
+        remove: true,
+        powerup: function (player) {
+            //no caso da abelha vamos utilizar a funcao throwAbelha do player
+            player.throwAbelha();
         },
     },
     //tronco
@@ -34,6 +39,7 @@ let powerups = [
         image: new Image(),
         x: 0,
         y: 0,
+        remove: false,
         powerup: function () {
             onPowerup("tronco");
         },
@@ -44,6 +50,7 @@ let powerups = [
         image: new Image(),
         x: 0,
         y: 0,
+        remove: false,
         powerup: function () {
             onPowerup("tronco_grande");
         },
@@ -54,17 +61,28 @@ let powerups = [
         image: new Image(),
         x: 0,
         y: 0,
+        remove: false,
+        //No caso do mel a gente vai diminuir bastante a velocidade do jogador
         powerup: function () {
-            onPowerup("mel");
+            player.speed -= 2;
+            setTimeout(() => {
+                player.speed += 2;
+            }, 5000);
         },
     },
+    //variacao do mel
     {
         sprite: "./assets/powerups/mel_melado.png",
         image: new Image(),
         x: 0,
         y: 0,
+        remove: false,
+        //No caso do mel a gente vai diminuir bastante a velocidade do jogador
         powerup: function () {
-            onPowerup("mel_melado");
+            player.speed -= 2;
+            setTimeout(() => {
+                player.speed += 2;
+            }, 5000);
         },
     },
 ];
@@ -92,9 +110,10 @@ export function spawnPowerups() {
     //primeiro spawn vai ser em 200x
     var spawnPoint = 200;
     //depois vai aumentar 500 x em cada powerup
-    var pointIncreaseAmount = 500;
+    var pointIncreaseAmount = 900;
     for (let index = 0; index < amountOfPowerups; index++) {
-        let powerup = Math.floor(Math.random() * 4);
+        //vamos usar apenas o mel e o trevo pros powerups aleatorios
+        let powerup = Math.floor(Math.random() * 2);
         let x = spawnPoint + pointIncreaseAmount * index;
         let y = 385;
         console.log("Powerup : " + powerups[powerup]);
@@ -119,7 +138,7 @@ export function checkPowerupCollision(player) {
         ) {
             console.log(gamePowerups[i]);
             gamePowerups[i].powerup.powerup(player);
-            gamePowerups.splice(i, 1);
+            if (gamePowerups[i].powerup.remove) gamePowerups.splice(i, 1);
         }
     }
 }

@@ -1,6 +1,6 @@
 //Script principal, aqui iremos inicializar tudo e rodar o update
 
-import { Bob, Botanico } from "./player.js";
+import { Bob, Botanico, loadPlayers } from "./player.js";
 import { menuAnimation, startButtons, startMenuAnimation } from "./menu.js";
 import { startController } from "./controller.js";
 import { startTutorial } from "./tutorial.js";
@@ -31,6 +31,7 @@ function startApp() {
     loadMapa();
     loadPowerups();
     loadCharactersAssets();
+    loadPlayers();
 }
 //Funcao de inicio pra setar as variaveis locais e o tamanho do canvas
 function startCanvas() {

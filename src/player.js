@@ -6,6 +6,26 @@ import { keyPressed, keys } from "./controller.js";
 import { getAsset } from "./loader.js";
 import { bobPulando, botanicoPulando, playSound, quackQuack } from "./som.js";
 
+//Classe de construcao da abelha que vai seguir o bob/botanico
+class Abelha {
+    constructor(position, size, image) {
+        this.position = position;
+        this.size = size;
+        this.image = image;
+
+        //variavel pra checar se a abelha esta em execucao
+        this.following = false;
+    }
+    draw(player) {
+        if (!this.following) return;
+        console.log(`drawing abelha, ${this.position.x}`);
+
+        this.position = player.position;
+
+        getCanvas().drawImage(this.image, this.position.x, this.position.y);
+    }
+}
+
 //Classe de construcao do bob
 class Player {
     constructor(position, size, image, speed) {
@@ -27,6 +47,13 @@ class Player {
         this.jumpForce = 22;
         //variavel que vai ser usada pra resetar a potencia do pulo
         this.originalJumpForce = 22;
+
+        //abelha/misc
+        this.abelha = new Abelha({ x: 0, y: 0 }, { w: 50, h: 51 }, new Image());
+    }
+
+    start() {
+        this.abelha.image.src = "./assets/powerups/abelha.png";
     }
 
     restart() {
@@ -46,6 +73,7 @@ class Player {
             this.position.x,
             this.position.y
         );
+        this.abelha.draw(this);
     }
 
     animate() {
@@ -90,6 +118,16 @@ class Player {
         if (this.position.y >= 390) return;
         this.position.y += 7.5;
     }
+
+    //Funcao pra jogar a abelha no outro jogador
+    throwAbelha() {
+        Botanico.abelha.following = true;
+        Botanico.speed -= 1;
+        setTimeout(() => {
+            Botanico.speed += 1;
+            Botanico.abelha.following = false;
+        }, 3000);
+    }
 }
 class BotanicoClass {
     constructor(position, size, image, speed) {
@@ -118,6 +156,12 @@ class BotanicoClass {
         this.waitForAnimation = 10;
         //variaveis do falling
         this.falling = true;
+        //abelha/misc
+        this.abelha = new Abelha({ x: 0, y: 0 }, { w: 50, h: 51 }, new Image());
+    }
+
+    start() {
+        this.abelha.image.src = "./assets/powerups/abelha.png";
     }
 
     restart() {
@@ -137,6 +181,7 @@ class BotanicoClass {
             this.position.x,
             this.position.y
         );
+        this.abelha.draw(this);
     }
 
     animate() {
@@ -217,6 +262,15 @@ class BotanicoClass {
         }
         this.position.y += 7.5;
     }
+    //Funcao pra jogar a abelha no outro jogador
+    throwAbelha() {
+        Bob.abelha.following = true;
+        Bob.speed -= 1;
+        setTimeout(() => {
+            Bob.speed += 1;
+            Bob.abelha.following = false;
+        }, 3000);
+    }
 }
 
 //Exportando as variaveis que contem o bob e o botanico
@@ -232,3 +286,9 @@ export let Botanico = new BotanicoClass(
     "./test.png",
     5
 );
+
+//Inicializando os players
+export function loadPlayers() {
+    Bob.start();
+    Botanico.start();
+}
