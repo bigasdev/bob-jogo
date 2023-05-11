@@ -18,7 +18,6 @@ class Abelha {
     }
     draw(player) {
         if (!this.following) return;
-        console.log(`drawing abelha, ${this.position.x}`);
 
         this.position = player.position;
 
@@ -64,7 +63,6 @@ class Player {
     draw() {
         if (getState() !== states.playing && getState() !== states.finished)
             return;
-        console.log(`drawing, ${this.position.x}`);
 
         this.animate();
 
@@ -98,6 +96,7 @@ class Player {
     }
 
     update() {
+        if (getState() !== states.playing) return;
         this.jump();
 
         if (keys.d.pressed) {
@@ -172,7 +171,6 @@ class BotanicoClass {
     draw() {
         if (getState() !== states.playing && getState() !== states.finished)
             return;
-        console.log(`drawing, ${this.position.x}`);
 
         this.animate();
 
@@ -187,10 +185,6 @@ class BotanicoClass {
     animate() {
         if (this.moving) this.spriteName = "Armature_Correndo_";
         this.currentFrame += 1;
-
-        console.log(
-            `current frame: ${this.currentFrame} current animation: ${this.spriteName}`
-        );
 
         if (this.currentFrame >= this.maxFrames) {
             this.currentFrame = 0;
@@ -213,7 +207,7 @@ class BotanicoClass {
     }
 
     update() {
-        console.log("tet botanico");
+        if (getState() !== states.playing) return;
         this.jump();
 
         //Controle das animacoes, dps vai ser reforumlado pra um state controller

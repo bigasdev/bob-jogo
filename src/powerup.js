@@ -161,7 +161,6 @@ export function checkPowerupCollision(player) {
 export function drawPowerups() {
     if (getState() !== states.playing) return;
     for (let i = 0; i < gamePowerups.length; i++) {
-        console.log(gamePowerups[i].powerup);
         getCanvas().drawImage(
             gamePowerups[i].powerup.image,
             gamePowerups[i].x,

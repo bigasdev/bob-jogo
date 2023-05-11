@@ -82,7 +82,6 @@ export function updateFlor() {
 export function drawMapa() {
     if (getState() !== states.playing && getState() !== states.finished) return;
     for (let i = 0; i < paredes.length; i++) {
-        console.log("mapa draw: $d", paredes[i].x);
         getCanvas().drawImage(paredes[i].image, paredes[i].x, paredes[i].y);
     }
     updateFlor();
@@ -95,7 +94,6 @@ export function drawMapa() {
 export function drawMapaFront() {
     if (getState() !== states.playing && getState() !== states.finished) return;
     for (let i = 0; i < gramas.length; i++) {
-        console.log("mapa draw: $d", gramas[i].x);
         getCanvas().drawImage(gramas[i].image, gramas[i].x, gramas[i].y);
     }
 }

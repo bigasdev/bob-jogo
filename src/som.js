@@ -42,3 +42,10 @@ export function startSound() {
         muteSound();
     });
 }
+//Funcao pra ajustar a posicao do botao dentro do game
+export function ajustarBotaoMute(isGame) {
+    var top = isGame ? "-24rem" : "-18rem";
+    var left = isGame ? "-39rem" : "-30rem";
+    document.getElementById("mute").style.marginTop = top;
+    document.getElementById("mute").style.marginLeft = left;
+}

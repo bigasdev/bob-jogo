@@ -1,7 +1,8 @@
 import { changeCanvasColor, resizeCanvas } from "./app.js";
-import { playSound, quackQuack } from "./som.js";
+import { ajustarBotaoMute, playSound, quackQuack } from "./som.js";
 import { sairMenu } from "./menu.js";
 import { changeState, getState, states } from "./state.js";
+import { enablePause } from "./pause.js";
 
 export function startCutscene() {
     changeState(states.cutscene);
@@ -37,6 +38,8 @@ export function cutscenePlayer() {
         closeCutscene();
         sairMenu();
         changeState(states.playing);
+        ajustarBotaoMute(true);
+        enablePause(true);
         changeCanvasColor("#8ff6ff");
         resizeCanvas(1280, 700);
         return;

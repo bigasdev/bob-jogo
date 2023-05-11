@@ -58,7 +58,6 @@ export function startController() {
                 keys.ArrowUp.pressed = true;
                 break;
         }
-        console.log(event.key);
     });
 
     window.addEventListener("keyup", (event) => {

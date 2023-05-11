@@ -23,7 +23,6 @@ export function updateCamera(canvas, ctx, bobPos, botanicoPos) {
     //Vamos detectar o player que ta mais na frente
     if (bobPos > botanicoPos) {
         //Vamos usar o bob como target
-        console.log("bob target");
         camX = clamp(
             bobPos - canvas.width / 2,
             worldBounds.minX,
@@ -37,7 +36,6 @@ export function updateCamera(canvas, ctx, bobPos, botanicoPos) {
             worldBounds.maxX - canvas.width
         );
     }
-    console.log(camX);
     ctx.translate(-camX, 0);
 }
 

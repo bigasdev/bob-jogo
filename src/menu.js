@@ -2,7 +2,13 @@ import { getCanvas, resizeCanvas } from "./app.js";
 import startCreditos, { closeCreditos } from "./creditos.js";
 import { startCutscene } from "./cutscene.js";
 import { getAsset } from "./loader.js";
-import { menuClick, playSound, quackQuack, startSound } from "./som.js";
+import {
+    ajustarBotaoMute,
+    menuClick,
+    playSound,
+    quackQuack,
+    startSound,
+} from "./som.js";
 import { changeState, states } from "./state.js";
 import startTutorialApp from "./tutorial.js";
 import { closeTutorial } from "./tutorial.js";
@@ -40,6 +46,7 @@ export function sairMenu() {
 
 export function restart() {
     document.getElementById("menu").style.display = "block";
+    ajustarBotaoMute(false);
     changeSairState(false);
     closeTutorial();
     closeCreditos();
@@ -87,6 +94,5 @@ export function menuAnimation() {
     if (animIndex > 64 && folderName === "Fundo") {
         animIndex = 0;
     }
-    console.log("drawing");
     getCanvas().drawImage(getAsset(`${animName}${animIndex}`), 0, 0);
 }

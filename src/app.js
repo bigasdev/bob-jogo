@@ -19,6 +19,7 @@ import {
     drawPowerups,
     loadPowerups,
 } from "./powerup.js";
+import { startPause } from "./pause.js";
 
 //Variaveis locais para o canvas e o context
 var canvas;
@@ -37,6 +38,7 @@ function startApp() {
     loadPowerups();
     loadCharactersAssets();
     loadPlayers();
+    startPause();
 }
 //Funcao de inicio pra setar as variaveis locais e o tamanho do canvas
 function startCanvas() {
@@ -158,9 +160,6 @@ function update() {
     {
         var d = Math.abs(Bob.position.x - Botanico.position.x);
         if (d >= playersDistThreshold) {
-            console.log(`Bob position : ${Bob.position.x}`);
-            console.log(`Botanico position : ${Botanico.position.x}`);
-
             if (Bob.position.x > Botanico.position.x) {
                 Bob.score += 50;
                 winner = "BOB";
