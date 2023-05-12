@@ -1,5 +1,6 @@
 import { winner } from "./app.js";
 import { cameraReset } from "./camera.js";
+import { resetPlataformas } from "./mapa.js";
 import { changeSairState, restart } from "./menu.js";
 import { Bob, Botanico } from "./player.js";
 import { resetPowerups } from "./powerup.js";
@@ -23,6 +24,7 @@ function restartEndgame() {
     document.getElementById("black_screen").style.display = "none";
     document.getElementById("fim_de_jogo").style.display = "none";
     resetPowerups();
+    resetPlataformas();
     changeState(states.playing);
 }
 

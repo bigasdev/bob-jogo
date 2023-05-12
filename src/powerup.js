@@ -144,6 +144,31 @@ export function addPowerup(powerup, x, y) {
 export function checkPowerupCollision(player) {
     if (getState() !== states.playing) return;
     for (let i = 0; i < gamePowerups.length; i++) {
+        if (!gamePowerups[i].powerup.remove) {
+            if (player.walkingRight) {
+                if (
+                    player.position.x + 10 < gamePowerups[i].x + 50 &&
+                    player.position.x + player.size.w > gamePowerups[i].x &&
+                    player.position.y < gamePowerups[i].y + 5 &&
+                    player.position.y + player.size.h > gamePowerups[i].y
+                ) {
+                    player.canMove = false;
+                    return;
+                }
+            }
+            if (player.walkingLeft) {
+                if (
+                    player.position.x - 10 < gamePowerups[i].x + 50 &&
+                    player.position.x + player.size.w > gamePowerups[i].x &&
+                    player.position.y < gamePowerups[i].y + 5 &&
+                    player.position.y + player.size.h > gamePowerups[i].y
+                ) {
+                    player.canMove = true;
+                    return;
+                }
+            }
+        }
+        player.canMove = true;
         if (
             player.position.x < gamePowerups[i].x + 50 &&
             player.position.x + player.size.w > gamePowerups[i].x &&

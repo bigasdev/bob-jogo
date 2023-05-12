@@ -296,6 +296,12 @@ let yPositions = {
     2: 350,
 };
 
+//Funcao pra resetar
+export function resetPlataformas() {
+    plataformas = [];
+    loadPlataformas();
+}
+
 function loadPlataformas() {
     plataforma.image.src = plataforma.sprite;
     florEsquerda.image.src = florEsquerda.sprite;

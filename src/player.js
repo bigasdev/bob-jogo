@@ -45,6 +45,8 @@ class Player {
         this.canJump = true;
         this.canPressJump = true;
         this.walkingRight = false;
+        this.walkingLeft = false;
+        this.canMove = true;
 
         //controle da gravidade
         this.jumped = false;
@@ -118,15 +120,19 @@ class Player {
         this.gravity();
         //Controle das animacoes, dps vai ser reforumlado pra um state controller
         if (keys.d.pressed) {
-            this.position.x += this.speed;
+            if (this.canMove) this.position.x += this.speed;
             this.walkingRight = true;
             if (this.jumped === false) this.moving = true;
         } else {
             this.walkingRight = false;
         }
         if (keys.a.pressed) {
-            if (this.position.x > 0) this.position.x -= this.speed;
+            if (this.canMove)
+                if (this.position.x > 0) this.position.x -= this.speed;
+            this.walkingLeft = true;
             if (this.jumped === false) this.moving = true;
+        } else {
+            this.walkingLeft = false;
         }
         if (
             keys.a.pressed === false &&
@@ -194,6 +200,9 @@ class BotanicoClass {
         this.score = 0;
         this.canJump = true;
         this.canPressJump = true;
+        this.walkingRight = false;
+        this.walkingLeft = false;
+        this.canMove = true;
 
         //controle da gravidade
         this.jumped = false;
@@ -266,12 +275,19 @@ class BotanicoClass {
 
         //Controle das animacoes, dps vai ser reforumlado pra um state controller
         if (keys.ArrowRight.pressed) {
-            this.position.x += this.speed;
+            if (this.canMove) this.position.x += this.speed;
+            this.walkingRight = true;
             if (this.jumped === false) this.moving = true;
+        } else {
+            this.walkingRight = false;
         }
         if (keys.ArrowLeft.pressed) {
-            if (this.position.x > 0) this.position.x -= this.speed;
+            if (this.canMove)
+                if (this.position.x > 0) this.position.x -= this.speed;
+            this.walkingLeft = true;
             if (this.jumped === false) this.moving = true;
+        } else {
+            this.walkingLeft = false;
         }
         if (
             keys.ArrowLeft.pressed === false &&
