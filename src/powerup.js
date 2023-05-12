@@ -1,6 +1,7 @@
 //Esse script vai ser usado pra criar os powerups
 
 import { getCanvas } from "./app.js";
+import { playSound, slowPickup, trevoPickup } from "./som.js";
 import { getState, states } from "./state.js";
 
 let powerups = [
@@ -14,6 +15,7 @@ let powerups = [
         remove: true,
         //funcao de quando passar pelo trevo
         powerup: function (player) {
+            playSound(trevoPickup);
             //no caso do trevo vamos aumentar a velocidade do jogador por 3 segundos
             player.speed += 2;
             setTimeout(() => {
@@ -29,6 +31,7 @@ let powerups = [
         y: 0,
         remove: true,
         powerup: function (player) {
+            playSound(slowPickup);
             //no caso da abelha vamos utilizar a funcao throwAbelha do player
             player.throwAbelha();
         },
@@ -68,6 +71,7 @@ let powerups = [
         remove: true,
         //No caso do mel a gente vai diminuir bastante a velocidade do jogador
         powerup: function (player) {
+            playSound(slowPickup);
             player.speed -= 2;
             setTimeout(() => {
                 player.speed += 2;
@@ -83,6 +87,7 @@ let powerups = [
         remove: true,
         //No caso do mel a gente vai diminuir bastante a velocidade do jogador
         powerup: function (player) {
+            playSound(slowPickup);
             player.speed -= 2;
             setTimeout(() => {
                 player.speed += 2;

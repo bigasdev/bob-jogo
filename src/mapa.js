@@ -331,8 +331,7 @@ function loadPlataformas() {
         //Check aleatorio pra ver se a plataforma vai ter mel ou nao (40% de chance)
         if (Math.random() < 0.4) {
             //Check aleatorio de 50% pra ver qual tipo de mel (apenas grafico)
-            let _mel = Math.random() < 0.5 ? mel : mel_melado;
-            addPowerup(_mel, x, y - 50);
+            addPowerup(mel_melado, x, y - 50);
         }
     }
 }

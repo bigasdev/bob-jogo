@@ -7,6 +7,8 @@ export const menuClick = new Audio("./assets/sons/menu-click.mp3");
 export const quackQuack = new Audio("./assets/sons/quackquack.mp3");
 export const botanicoPulando = new Audio("./assets/sons/botanico-pulando.mp3");
 export const bobPulando = new Audio("./assets/sons/bob-pulo.mp3");
+export const trevoPickup = new Audio("./assets/sons/trevo.mp3");
+export const slowPickup = new Audio("./assets/sons/slow.mp3");
 
 //Funcao pra dar play no som
 export function playSound(sound) {
