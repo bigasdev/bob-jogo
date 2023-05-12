@@ -146,7 +146,7 @@ class Player {
             this.moving = false;
         }
         if (keys.w.pressed && this.jumped === false && this.canPressJump) {
-            if (this.position.y < 380) return;
+            if (this.position.y < 380 && !this.grounded) return;
             playSound(bobPulando);
             this.spriteName = "Armature_Pulando_";
             this.currentFrame = 0;

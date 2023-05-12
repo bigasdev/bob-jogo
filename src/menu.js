@@ -1,3 +1,5 @@
+//Script responsavel pelo menu inicial
+
 import { getCanvas, resizeCanvas } from "./app.js";
 import startCreditos, { closeCreditos } from "./creditos.js";
 import { startCutscene } from "./cutscene.js";
@@ -45,6 +47,7 @@ export function sairMenu() {
     document.getElementById("menu").style.display = "none";
 }
 
+//Funcao para reiniciar o jogo
 export function restart() {
     document.getElementById("menu").style.display = "block";
     ajustarBotaoMute(false);

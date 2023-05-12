@@ -1,3 +1,5 @@
+//Script responsavel para carregar os assets do jogo previamente para nao ter nenhum erro
+
 import { changeState, states } from "./state.js";
 
 //Mapa que vai guardar a imagem de todos os assets do menu

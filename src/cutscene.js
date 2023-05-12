@@ -1,3 +1,5 @@
+//script que vai controlar a cutscene antes de iniciar o jogo
+
 import { changeCanvasColor, resizeCanvas } from "./app.js";
 import { ajustarBotaoMute, playSound, quackQuack } from "./som.js";
 import { sairMenu } from "./menu.js";
@@ -32,6 +34,7 @@ var cutsceneImgs = [
     "quarto",
 ];
 
+//player da cutscene que vai trocar os frames e iniciar o jogo caso chegue no fim
 export function cutscenePlayer() {
     if (getState() != states.cutscene) return;
     if (cutsceneValue >= cutsceneAmt) {

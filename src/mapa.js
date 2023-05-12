@@ -9,7 +9,7 @@ import {
 } from "./powerup.js";
 import { getState, states } from "./state.js";
 
-//script utilizado para a criacao do mapa
+//script responsavel pela criacao do mapa e a maior parte dos objetos
 class Parede {
     constructor(x, y) {
         this.x = x;
@@ -294,8 +294,8 @@ let plataformas = [];
 let xIncrease = 750;
 let yPositions = {
     0: 400,
-    1: 300,
-    2: 350,
+    1: 350,
+    2: 300,
 };
 
 //Funcao pra resetar
@@ -333,6 +333,21 @@ function loadPlataformas() {
             //Check aleatorio de 50% pra ver qual tipo de mel (apenas grafico)
             addPowerup(mel_melado, x, y - 50);
         }
+        //vamos adicionar a platforma nos powerups pra ter colisoes:
+        addPowerup(
+            {
+                x: x,
+                y: y,
+                offset_Y: -10,
+                offset_X: -30,
+                remove: false,
+                sizeX: 90,
+                draw: false,
+                powerup: function (player) {},
+            },
+            x,
+            y
+        );
     }
 }
 

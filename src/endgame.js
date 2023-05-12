@@ -1,3 +1,5 @@
+//script responsavel pela tema de fim de jogo
+
 import { winner } from "./app.js";
 import { cameraReset } from "./camera.js";
 import { resetPlataformas } from "./mapa.js";

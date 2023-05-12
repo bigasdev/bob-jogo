@@ -13,6 +13,8 @@ let powerups = [
         y: 0,
         //bool pra remover o powerup ou nao dps de colidir
         remove: true,
+        sizeX: 50,
+        draw: true,
         //funcao de quando passar pelo trevo
         powerup: function (player) {
             playSound(trevoPickup);
@@ -30,6 +32,8 @@ let powerups = [
         x: 0,
         y: 0,
         remove: true,
+        sizeX: 50,
+        draw: true,
         powerup: function (player) {
             playSound(slowPickup);
             //no caso da abelha vamos utilizar a funcao throwAbelha do player
@@ -45,6 +49,8 @@ let powerups = [
         offset_Y: -45,
         offset_X: -60,
         remove: false,
+        sizeX: 50,
+        draw: true,
         powerup: function () {
             onPowerup("tronco");
         },
@@ -58,6 +64,8 @@ let powerups = [
         offset_Y: -30,
         offset_X: -60,
         remove: false,
+        sizeX: 50,
+        draw: true,
         powerup: function () {
             onPowerup("tronco_grande");
         },
@@ -69,6 +77,8 @@ let powerups = [
         x: 0,
         y: 0,
         remove: true,
+        sizeX: 50,
+        draw: true,
         //No caso do mel a gente vai diminuir bastante a velocidade do jogador
         powerup: function (player) {
             playSound(slowPickup);
@@ -85,6 +95,8 @@ let powerups = [
         x: 0,
         y: 0,
         remove: true,
+        sizeX: 50,
+        draw: true,
         //No caso do mel a gente vai diminuir bastante a velocidade do jogador
         powerup: function (player) {
             playSound(slowPickup);
@@ -156,7 +168,8 @@ export function checkPowerupCollision(player) {
         if (!gamePowerups[i].powerup.remove) {
             //Colisao vertical
             if (
-                player.position.x < gamePowerups[i].x + 50 &&
+                player.position.x <
+                    gamePowerups[i].x + gamePowerups[i].powerup.sizeX &&
                 player.position.x +
                     player.size.w +
                     gamePowerups[i].powerup.offset_X >
@@ -213,11 +226,12 @@ export function checkPowerupCollision(player) {
 export function drawPowerups() {
     if (getState() !== states.playing && getState() !== states.paused) return;
     for (let i = 0; i < gamePowerups.length; i++) {
-        getCanvas().drawImage(
-            gamePowerups[i].powerup.image,
-            gamePowerups[i].x,
-            gamePowerups[i].y
-        );
+        if (gamePowerups[i].powerup.draw)
+            getCanvas().drawImage(
+                gamePowerups[i].powerup.image,
+                gamePowerups[i].x,
+                gamePowerups[i].y
+            );
     }
 }
 

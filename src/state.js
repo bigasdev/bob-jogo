@@ -1,3 +1,5 @@
+//Script usado para controlar os states do game, util pra pausar e coisas do genero
+
 import { clearCanvas } from "./app.js";
 
 export const states = {
