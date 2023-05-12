@@ -41,11 +41,18 @@ class Player {
 
         this.score = 0;
 
+        //variaveis de controle
+        this.canJump = true;
+
         //controle da gravidade
         this.jumped = false;
         this.jumpForce = 22;
         //variavel que vai ser usada pra resetar a potencia do pulo
         this.originalJumpForce = 22;
+        //variavel pra esperar a animacao
+        this.waitForAnimation = 10;
+        //variaveis do falling
+        this.falling = true;
 
         //abelha/misc
         this.abelha = new Abelha({ x: 0, y: 0 }, { w: 50, h: 51 }, new Image());
@@ -57,7 +64,6 @@ class Player {
 
     restart() {
         this.position.x = 0;
-        this.score = 0;
     }
 
     draw() {
@@ -79,7 +85,7 @@ class Player {
     }
 
     animate() {
-        this.spriteName = "Armature_Correndo_";
+        if (this.moving) this.spriteName = "Armature_Correndo_";
         this.currentFrame += 1;
 
         if (this.currentFrame >= this.maxFrames) {
@@ -89,12 +95,17 @@ class Player {
 
     //Funcao pro pulo
     jump() {
+        if (!this.canJump) return;
         if (this.jumped) {
-            this.position.y -= this.jumpForce;
-            this.jumpForce -= 1;
-            if (this.jumpForce <= 0) {
-                this.jumpForce = this.originalJumpForce;
-                this.jumped = false;
+            this.waitForAnimation -= 1;
+            if (this.waitForAnimation <= 0) {
+                this.position.y -= this.jumpForce;
+                this.jumpForce -= 1;
+                if (this.jumpForce <= 0) {
+                    this.jumpForce = this.originalJumpForce;
+                    this.waitForAnimation = 5;
+                    this.jumped = false;
+                }
             }
         }
     }
@@ -118,7 +129,16 @@ class Player {
     }
 
     gravity() {
-        if (this.position.y >= 390) return;
+        if (this.position.y >= 390) {
+            this.falling = false;
+            return;
+        }
+        this.moving = false;
+        if (this.jumped == false) {
+            this.falling = true;
+            this.spriteName = "Armature_Caindo_";
+            this.maxFrames = 36;
+        }
         this.position.y += 7.5;
     }
 
@@ -149,6 +169,7 @@ class BotanicoClass {
         this.currentFrame = 0;
 
         this.score = 0;
+        this.canJump = true;
 
         //controle da gravidade
         this.jumped = false;
@@ -169,7 +190,6 @@ class BotanicoClass {
 
     restart() {
         this.position.x = 50;
-        this.score = 0;
     }
 
     draw() {
@@ -200,6 +220,7 @@ class BotanicoClass {
     }
 
     jump() {
+        if (!this.canJump) return;
         if (this.jumped) {
             this.waitForAnimation -= 1;
             if (this.waitForAnimation <= 0) {

@@ -145,9 +145,9 @@ export function checkPowerupCollision(player) {
     if (getState() !== states.playing) return;
     for (let i = 0; i < gamePowerups.length; i++) {
         if (
-            player.position.x < gamePowerups[i].x + 101 &&
+            player.position.x < gamePowerups[i].x + 50 &&
             player.position.x + player.size.w > gamePowerups[i].x &&
-            player.position.y < gamePowerups[i].y + 102 &&
+            player.position.y < gamePowerups[i].y + 51 &&
             player.position.y + player.size.h > gamePowerups[i].y
         ) {
             console.log(gamePowerups[i]);
@@ -167,4 +167,10 @@ export function drawPowerups() {
             gamePowerups[i].y
         );
     }
+}
+
+//funcao usada pra resetar os powerups
+export function resetPowerups() {
+    gamePowerups = [];
+    spawnPowerups();
 }

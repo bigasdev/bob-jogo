@@ -2,6 +2,7 @@ import { winner } from "./app.js";
 import { cameraReset } from "./camera.js";
 import { changeSairState, restart } from "./menu.js";
 import { Bob, Botanico } from "./player.js";
+import { resetPowerups } from "./powerup.js";
 import { changeState, states } from "./state.js";
 
 export default function startEndgame() {
@@ -15,12 +16,13 @@ export default function startEndgame() {
     document.getElementById(
         "botanico_score"
     ).innerHTML = `Botanico: ${Botanico.score}`;
-    document.getElementById("winner").innerHTML = `VENCEDOR: ${winner}`;
+    document.getElementById("winner").innerHTML = `Vencedor: ${winner}`;
 }
 
 function restartEndgame() {
     document.getElementById("black_screen").style.display = "none";
     document.getElementById("fim_de_jogo").style.display = "none";
+    resetPowerups();
     changeState(states.playing);
 }
 

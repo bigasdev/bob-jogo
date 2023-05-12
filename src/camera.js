@@ -1,6 +1,7 @@
 //Script que vai ser utilizado para controlar a camera do jogo
 //(ela vai seguir o jogador que esta mais na frente)
 
+import { getCanvas } from "./app.js";
 import { getState, states } from "./state.js";
 
 //Funcao pra controlar um minimo e maximo pro valor
@@ -41,6 +42,6 @@ export function updateCamera(canvas, ctx, bobPos, botanicoPos) {
 
 //Funcao que vai ser chamada no fim de jogo/restart
 export function cameraReset() {
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    getCanvas().setTransform(1, 0, 0, 1, 0, 0);
     camX = 0;
 }

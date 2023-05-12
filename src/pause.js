@@ -31,6 +31,12 @@ function pause() {
 
     document.getElementById("black_screen").style.display = "block";
     document.getElementById("menu_pause").style.display = "block";
+
+    //Mostrando a pontuacao dos jogadores
+    document.getElementById("bob_score_pause").innerHTML = `Bob: ${Bob.score}`;
+    document.getElementById(
+        "botanico_score_pause"
+    ).innerHTML = `Botanico: ${Botanico.score}`;
 }
 //Funcao pra despausar
 function unpause() {
