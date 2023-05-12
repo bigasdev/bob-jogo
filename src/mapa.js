@@ -377,7 +377,7 @@ export function drawPlataformasPlantas() {
 
 //Spawn dos vasos no mapa aleatoriamente
 let vaso = {
-    sprite: "./assets/mapa/Vaso.png",
+    sprite: "./assets/mapa/vaso.png",
     x: 0,
     y: 0,
     image: new Image(),
