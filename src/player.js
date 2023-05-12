@@ -43,6 +43,8 @@ class Player {
 
         //variaveis de controle
         this.canJump = true;
+        this.canPressJump = true;
+        this.walkingRight = false;
 
         //controle da gravidade
         this.jumped = false;
@@ -113,24 +115,45 @@ class Player {
     update() {
         if (getState() !== states.playing) return;
         this.jump();
-
+        this.gravity();
+        //Controle das animacoes, dps vai ser reforumlado pra um state controller
         if (keys.d.pressed) {
             this.position.x += this.speed;
+            this.walkingRight = true;
+            if (this.jumped === false) this.moving = true;
+        } else {
+            this.walkingRight = false;
         }
         if (keys.a.pressed) {
             if (this.position.x > 0) this.position.x -= this.speed;
+            if (this.jumped === false) this.moving = true;
         }
-        if (keys.w.pressed && this.jumped === false) {
+        if (
+            keys.a.pressed === false &&
+            keys.d.pressed === false &&
+            this.jumped === false &&
+            this.falling === false
+        ) {
+            this.spriteName = "Armature_Parado_";
+            this.maxFrames = 48;
+            this.moving = false;
+        }
+        if (keys.w.pressed && this.jumped === false && this.canPressJump) {
             if (this.position.y < 380) return;
             playSound(bobPulando);
+            this.spriteName = "Armature_Pulando_";
+            this.currentFrame = 0;
+            this.maxFrames = 24;
+            this.canPressJump = false;
+            this.moving = false;
             this.jumped = true;
         }
-        this.gravity();
     }
 
     gravity() {
         if (this.position.y >= 390) {
             this.falling = false;
+            this.canPressJump = true;
             return;
         }
         this.moving = false;
@@ -170,6 +193,7 @@ class BotanicoClass {
 
         this.score = 0;
         this.canJump = true;
+        this.canPressJump = true;
 
         //controle da gravidade
         this.jumped = false;
@@ -238,6 +262,7 @@ class BotanicoClass {
     update() {
         if (getState() !== states.playing) return;
         this.jump();
+        this.gravity();
 
         //Controle das animacoes, dps vai ser reforumlado pra um state controller
         if (keys.ArrowRight.pressed) {
@@ -258,24 +283,29 @@ class BotanicoClass {
             this.maxFrames = 48;
             this.moving = false;
         }
-        if (keys.ArrowUp.pressed) {
+        if (
+            keys.ArrowUp.pressed &&
+            this.jumped === false &&
+            this.canPressJump
+        ) {
             if (this.position.y < 460) return;
             playSound(botanicoPulando);
             this.spriteName = "Armature_Pulando_";
             this.currentFrame = 0;
             this.maxFrames = 24;
             this.moving = false;
+            this.canPressJump = false;
             this.jumped = true;
         }
         if (keys.e.pressed) {
             playSound(quackQuack);
         }
-        this.gravity();
     }
 
     gravity() {
         if (this.position.y >= 470) {
             this.falling = false;
+            this.canPressJump = true;
             return;
         }
         this.moving = false;

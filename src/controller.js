@@ -1,3 +1,4 @@
+//Script responsavel pelos controles do jogo
 export const keys = {
     a: {
         pressed: false,
