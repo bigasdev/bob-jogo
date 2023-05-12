@@ -17,6 +17,7 @@ var tutorialState = 0;
 var tutorialAmt = 3;
 
 export function startTutorial() {
+    document.getElementById("tutorial_anterior").style.display = "none";
     document.getElementById("tutorial_prox").addEventListener("click", () => {
         next();
     });
@@ -38,12 +39,20 @@ function pular() {
 
 function next() {
     if (tutorialState < tutorialAmt - 1) tutorialState++;
+    if (tutorialState === tutorialAmt - 1) {
+        document.getElementById("tutorial_prox").style.display = "none";
+    }
+    document.getElementById("tutorial_anterior").style.display = "block";
     document.getElementById(
         "tutorial_img"
     ).src = `./assets/tutorial/tutorial_${tutorialState}.png`;
 }
 function anterior() {
     if (tutorialState > 0) tutorialState--;
+    if (tutorialState === 0) {
+        document.getElementById("tutorial_anterior").style.display = "none";
+    }
+    document.getElementById("tutorial_prox").style.display = "block";
     document.getElementById(
         "tutorial_img"
     ).src = `./assets/tutorial/tutorial_${tutorialState}.png`;
