@@ -47,6 +47,7 @@ class Player {
         this.walkingRight = false;
         this.walkingLeft = false;
         this.canMove = true;
+        this.grounded = false;
 
         //controle da gravidade
         this.jumped = false;
@@ -157,7 +158,7 @@ class Player {
     }
 
     gravity() {
-        if (this.position.y >= 390) {
+        if (this.position.y >= 390 || this.grounded) {
             this.falling = false;
             this.canPressJump = true;
             return;
@@ -203,6 +204,7 @@ class BotanicoClass {
         this.walkingRight = false;
         this.walkingLeft = false;
         this.canMove = true;
+        this.grounded = false;
 
         //controle da gravidade
         this.jumped = false;
@@ -304,7 +306,7 @@ class BotanicoClass {
             this.jumped === false &&
             this.canPressJump
         ) {
-            if (this.position.y < 460) return;
+            if (this.position.y < 460 && !this.grounded) return;
             playSound(botanicoPulando);
             this.spriteName = "Armature_Pulando_";
             this.currentFrame = 0;
@@ -319,7 +321,7 @@ class BotanicoClass {
     }
 
     gravity() {
-        if (this.position.y >= 470) {
+        if (this.position.y >= 470 || this.grounded) {
             this.falling = false;
             this.canPressJump = true;
             return;

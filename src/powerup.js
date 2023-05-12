@@ -39,6 +39,8 @@ let powerups = [
         image: new Image(),
         x: 0,
         y: 0,
+        offset_Y: -45,
+        offset_X: -60,
         remove: false,
         powerup: function () {
             onPowerup("tronco");
@@ -50,6 +52,8 @@ let powerups = [
         image: new Image(),
         x: 0,
         y: 0,
+        offset_Y: -30,
+        offset_X: -60,
         remove: false,
         powerup: function () {
             onPowerup("tronco_grande");
@@ -145,6 +149,23 @@ export function checkPowerupCollision(player) {
     if (getState() !== states.playing) return;
     for (let i = 0; i < gamePowerups.length; i++) {
         if (!gamePowerups[i].powerup.remove) {
+            //Colisao vertical
+            if (
+                player.position.x < gamePowerups[i].x + 50 &&
+                player.position.x +
+                    player.size.w +
+                    gamePowerups[i].powerup.offset_X >
+                    gamePowerups[i].x &&
+                player.position.y < gamePowerups[i].y &&
+                player.position.y +
+                    player.size.h +
+                    gamePowerups[i].powerup.offset_Y >
+                    gamePowerups[i].y
+            ) {
+                player.grounded = true;
+                player.canMove = true;
+                return;
+            }
             if (player.walkingRight) {
                 if (
                     player.position.x + 10 < gamePowerups[i].x + 50 &&
@@ -169,6 +190,7 @@ export function checkPowerupCollision(player) {
             }
         }
         player.canMove = true;
+        player.grounded = false;
         if (
             player.position.x < gamePowerups[i].x + 50 &&
             player.position.x + player.size.w > gamePowerups[i].x &&
