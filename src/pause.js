@@ -22,6 +22,13 @@ export function startPause() {
 export function enablePause(state) {
     var display = state ? "block" : "none";
     document.getElementById("pause_menu").style.display = display;
+    if (state) {
+        document.getElementById("tela_flores").src =
+            "./assets/flores/Completo-tela-jogo.png";
+    } else {
+        document.getElementById("tela_flores").src =
+            "./assets/flores/Completo.png";
+    }
 }
 
 //Funcao principal do pause
