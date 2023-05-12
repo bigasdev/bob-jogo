@@ -66,6 +66,7 @@ export function loadMapa() {
     arbusto.image.src = arbusto.sprite;
     flor.image.src = flor.sprite;
     loadCeu();
+    loadVasos();
     loadPlataformas();
 }
 //funcao que vai fazer uma animacao pra flor
@@ -93,6 +94,7 @@ export function drawMapa() {
     getCanvas().drawImage(arbusto.image, arbusto.x, arbusto.y);
     getCanvas().drawImage(flor.image, flor.x, flor.y);
     drawCeu();
+    drawVasos();
     drawPlataformas();
 }
 //funcao pra desenhar as coisas que ficam na frente dos jogadores
@@ -356,5 +358,54 @@ export function drawPlataformasPlantas() {
     for (let i = 0; i < plataformas.length; i++) {
         plataformas[i].florEsquerda.draw();
         plataformas[i].florDireita.draw();
+    }
+}
+
+//Spawn dos vasos no mapa aleatoriamente
+let vaso = {
+    sprite: "./assets/mapa/Vaso.png",
+    x: 0,
+    y: 0,
+    image: new Image(),
+};
+
+class Vaso {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.image = new Image();
+    }
+    initialize() {
+        this.image.src = vaso.sprite;
+    }
+    draw() {
+        getCanvas().drawImage(this.image, this.x, this.y);
+    }
+}
+
+let vasos = [];
+//Funcao pra dar load nos vasos
+function loadVasos() {
+    vaso.image.src = vaso.sprite;
+    for (let i = 1; i < 10; i++) {
+        let x = i * 850;
+        let y = 480;
+        let vaso = new Vaso(x, y);
+        vaso.initialize();
+        vasos.push({
+            vaso: vaso,
+        });
+    }
+}
+//Funcao pra desenhar os vasos
+function drawVasos() {
+    if (
+        getState() !== states.playing &&
+        getState() !== states.finished &&
+        getState() !== states.paused
+    )
+        return;
+    for (let i = 0; i < vasos.length; i++) {
+        vasos[i].vaso.draw();
     }
 }
